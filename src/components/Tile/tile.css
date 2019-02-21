@@ -1,0 +1,29 @@
+.tile{
+  background-color: rgba(255, 255, 255, 1);
+  height: 252px;
+  border-radius: 3px;
+}
+
+.tile-header-name{
+  padding-left: 30px;
+  padding-top: 10px;
+  font-family: Roboto;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 20px;
+}
+
+.tile-img{
+  height: 104px;
+  width: 104px;
+}
+
+.tile-footer{
+  padding-left: 3px;
+  padding-right: 3px;
+  font-family: 'SF UI Text';
+  font-size: 15px;
+  border-radius: 5px;
+  border: 2px solid black;
+  display: inline;
+}
