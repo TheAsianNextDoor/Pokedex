@@ -1,26 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import TileHeader from "./TileHeader"
 import TileImage from "./TileImage"
 import TileFooter from "./TileFooter"
 import './tile.css'
 
-class Tile extends Component {
-  constructor(){
-    super()
-    this.state = {
+function Tile(props)
+{
+  return(
+    <div className="tile">
+      <TileHeader name={props.name}/>
+      <TileImage img={props.img}/>
+      <TileFooter type={props.type}/>
+    </div>
+  )
 
-    }
-  }
-
-  render() {
-    return(
-      <div className="tile">
-        <TileHeader />
-        <TileImage />
-        <TileFooter />
-      </div>
-    )
-  }
 }
 
 export default Tile

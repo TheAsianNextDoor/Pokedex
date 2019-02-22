@@ -2,29 +2,26 @@ import React, { Component } from 'react'
 import './tile.css'
 
 class TileFooter extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      type: []
+      type: props.type,
     }
   }
 
-  componentDidMount() {
-    fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=Bulbasaur")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({type: data.data[0].types})
-      })
-  }
-
   render() {
-    let i = 0
-    const list = this.state.type.map((item) =>
-      <div className='d-inline px-1'>
-        <p className='tile-footer'>{item} key={i++}</p>
-      </div>)
+    let list = []
+    //makes sure array isn't empty
+    if(Array.isArray(this.state.type))
+    {
+      list = this.state.type.map((item) =>
+        <div className='d-inline px-1'>
+          <p className='tile-footer'>{item}</p>
+        </div>
+        )
+    }
     return(
-      <div className='text-right pr-4'>
+      <div className='text-right pr-4 pt-2'>
         {list}
       </div>
     )

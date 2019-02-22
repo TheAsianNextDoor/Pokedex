@@ -12,7 +12,7 @@ class App extends Component {
           {/*Backward button, search bar, forward button*/}
           <Header />
 
-          {/* First Row of Pokemon */}
+          {/* Pokemon */}
           <Body />
 
         </Container>
