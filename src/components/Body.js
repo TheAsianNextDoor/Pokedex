@@ -4,18 +4,35 @@ import {Row, Col } from 'reactstrap'
 
 
 class Body extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       ids: [],
       names: [],
       imgs: [],
-      types: []
+      types: [],
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.page !== this.props.page)
+    {
+      fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page="+nextProps.page,{
+        method: 'GET'
+      })
+        .then(response => response.json())
+        .then(list => this.setState({
+          ids: list.data.map(item => item.id),
+          names: list.data.map(item => item.name),
+          imgs: list.data.map(item => item.image),
+          types: list.data.map(item => item.types)
+        },console.log(list.meta))
+        )
     }
   }
 
   componentDidMount() {
-    fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon",{
+    fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page="+this.props.page,{
       method: 'GET'
     })
       .then(response => response.json())

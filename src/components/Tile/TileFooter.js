@@ -10,12 +10,13 @@ class TileFooter extends Component {
   }
 
   render() {
+    let i = 0
     let list = []
     //makes sure array isn't empty
     if(Array.isArray(this.state.type))
     {
       list = this.state.type.map((item) =>
-        <div className='d-inline px-1'>
+        <div key={i++} className='d-inline px-1'>
           <p className='tile-footer'>{item}</p>
         </div>
         )

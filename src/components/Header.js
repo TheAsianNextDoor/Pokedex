@@ -10,13 +10,13 @@ class Header extends Component {
       <Container>
         <Row className="">
           <Col xs={2} md={2}>
-            <BackwardButton />
+            <BackwardButton action={this.props.action}/>
           </Col>
           <Col xs={8} md={8} className="px-0 mx-0 py-4">
             <SearchBar />
           </Col>
           <Col xs={2} md={2}>
-            <ForwardButton />
+            <ForwardButton action={this.props.action}/>
           </Col>
         </Row>
       </Container>

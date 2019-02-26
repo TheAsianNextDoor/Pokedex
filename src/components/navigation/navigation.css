@@ -13,3 +13,15 @@
 #search-bar:focus{
   outline: none;
 }
+
+.green-background{
+  background-color: rgba(85, 166, 156, 1);
+}
+
+.arrow{
+  transform: translateY(50%);
+  color: white;
+}
+.arrow:hover{
+  color: rgba(0,0,0,.7);
+}

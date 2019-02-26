@@ -1,5 +1,8 @@
 
 .container-fluid{
-height: 1024px;
-background-color: rgba(85, 166, 156, 1);
+  height: 1024px;
+  background-color: rgba(85, 166, 156, 1);
+}
+.inner-container{
+  width: 1024px;
 }
