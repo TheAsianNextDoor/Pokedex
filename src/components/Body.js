@@ -15,40 +15,16 @@ class Body extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.page !== this.props.page)
-    {
-      fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page="+nextProps.page,{
-        method: 'GET'
-      })
-        .then(response => response.json())
-        .then(list => this.setState({
-          ids: list.data.map(item => item.id),
-          names: list.data.map(item => item.name),
-          imgs: list.data.map(item => item.image),
-          types: list.data.map(item => item.types)
-        },console.log(list.meta))
-        )
-    }
-  }
-
-  componentDidMount() {
-    fetch("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page="+this.props.page,{
-      method: 'GET'
+    const list = nextProps.data.data
+    this.setState({
+      ids: list.map(item => item.id),
+      names: list.map(item => item.name),
+      imgs: list.map(item => item.image),
+      types: list.map(item => item.types)
     })
-      .then(response => response.json())
-      .then(list => this.setState({
-        ids: list.data.map(item => item.id),
-        names: list.data.map(item => item.name),
-        imgs: list.data.map(item => item.image),
-        types: list.data.map(item => item.types)
-        })
-      )
   }
 
   render() {
-    // const tileItem = this.state.data.map(d => <Tile key={d.data.id} info={d.data}/>)
-    // const ids =  this.state.data.map(item => item.id)
-    // const names = this.state.data.map(item => item.name)
     return(
       <div>
         {/* First Row */}

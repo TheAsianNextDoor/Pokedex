@@ -1,0 +1,3 @@
+cd ../pokedex
+: 
+npm start
