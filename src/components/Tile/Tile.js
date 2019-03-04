@@ -4,7 +4,7 @@ import TileImage from "./TileImage"
 import TileFooter from "./TileFooter"
 import './tile.css'
 
-function Tile(props)
+export default function Tile(props)
 {
   return(
     <div className="tile">
@@ -15,5 +15,3 @@ function Tile(props)
   )
 
 }
-
-export default Tile

@@ -1,21 +1,14 @@
 import React, { Component } from 'react'
 import './tile.css'
 
-class TileFooter extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      type: props.type,
-    }
-  }
-
+export default class TileFooter extends Component {
   render() {
     let i = 0
     let list = []
     //makes sure array isn't empty
-    if(Array.isArray(this.state.type))
+    if(Array.isArray(this.props.type))
     {
-      list = this.state.type.map((item) =>
+      list = this.props.type.map((item) =>
         <div key={i++} className='d-inline px-1'>
           <p className='tile-footer'>{item}</p>
         </div>
@@ -28,5 +21,3 @@ class TileFooter extends Component {
     )
   }
 }
-
-export default TileFooter

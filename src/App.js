@@ -1,36 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 import {Container} from 'reactstrap'
 import './App.css';
 import Body from './components/Body.js'
 import Header from './components/Header.js'
+import Card from './components/PokemonCard/Card.js'
 
 
-class App extends Component {
+export default class App extends Component {
   constructor(){
     super()
     this.state = {
       data: [null],
-      page: 1
+      page: 1,
+      cardView: false
     }
     this.handleChange = this.handleChange.bind(this)
+    this.changeCardViewState = this.changeCardViewState.bind(this)
   }
 
-  async retrieveData(url){
+retrieveData(url){
     try{
-    await fetch(url,{
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(list => this.setState({
-        data: list,
-        page: list.meta.current_page
-        })
-      )
+      fetch(url,{
+        method: 'GET'
+      })
+        .then(response => response.json())
+        .then(list => this.setState({
+          data: list,
+          page: list.meta.current_page
+          })
+        )
     }
     catch(e){
       //Do nothing when page isn't reacheable. Keeps pages in range
       // 1 < page < 37
       }
+  }
+
+  changeCardViewState(){
+    this.setState(prevState => ({cardView: !prevState.cardView}))
   }
 
   componentDidMount(){
@@ -55,6 +63,10 @@ class App extends Component {
     }
   }
 
+  changeCardViewState(){
+    this.setState(prevState => ({cardView: !prevState.cardView}))
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -67,6 +79,8 @@ class App extends Component {
           {/* Pokemon */}
           <Body
             data={this.state.data}
+            changeCardView={this.changeCardViewState}
+            cardView={this.state.cardView}
           />
 
         </Container>
@@ -74,5 +88,3 @@ class App extends Component {
     )
   }
 }
-
-export default App;

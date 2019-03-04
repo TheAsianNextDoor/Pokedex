@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './navigation.css'
 
-class BackwardButton extends Component {
+export default class BackwardButton extends Component {
   render() {
     return(
       <div className="text-center">
@@ -13,5 +13,3 @@ class BackwardButton extends Component {
     )
   }
 }
-
-export default BackwardButton

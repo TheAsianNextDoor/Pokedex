@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Tile from './Tile/Tile.js'
 import {Row, Col } from 'reactstrap'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Card from './PokemonCard/Card.js'
 
-
-class Body extends Component {
+export default class Body extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -12,6 +13,7 @@ class Body extends Component {
       imgs: [],
       types: [],
     }
+    this.renderTile = this.renderTile.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,117 +26,149 @@ class Body extends Component {
     })
   }
 
+  renderTile(num){
+    if(!this.props.cardView)
+    {
+      return(
+        <Link
+          to= {'/Pokemon/'+this.state.ids[num]}
+          onClick={() => this.props.changeCardView()}
+        >
+          <Tile
+            key={this.state.ids[num]}
+            name={this.state.names[num]}
+            img={this.state.imgs[num]}
+            type={this.state.types[num]}
+          />
+        </Link>
+      )
+    }
+  }
+
   render() {
+    console.log(this.props.cardView)
     return(
+      <Router>
       <div>
         {/* First Row */}
         <Row>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[0]}
-              name={this.state.names[0]}
-              img={this.state.imgs[0]}
-              type={this.state.types[0]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(0)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[1]}
-              name={this.state.names[1]}
-              img={this.state.imgs[1]}
-              type={this.state.types[1]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(1)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[2]}
-              name={this.state.names[2]}
-              img={this.state.imgs[2]}
-              type={this.state.types[2]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(2)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[3]}
-              name={this.state.names[3]}
-              img={this.state.imgs[3]}
-              type={this.state.types[3]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(3)}
           </Col>
         </Row>
         {/* Second Row */}
         <Row>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[4]}
-              name={this.state.names[4]}
-              img={this.state.imgs[4]}
-              type={this.state.types[4]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(4)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[5]}
-              name={this.state.names[5]}
-              img={this.state.imgs[5]}
-              type={this.state.types[5]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(5)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[6]}
-              name={this.state.names[6]}
-              img={this.state.imgs[6]}
-              type={this.state.types[6]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(6)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[7]}
-              name={this.state.names[7]}
-              img={this.state.imgs[7]}
-              type={this.state.types[7]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(7)}
           </Col>
         </Row>
         {/* Third Row */}
         <Row>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[8]}
-              name={this.state.names[8]}
-              img={this.state.imgs[8]}
-              type={this.state.types[8]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(8)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[9]}
-              name={this.state.names[9]}
-              img={this.state.imgs[9]}
-              type={this.state.types[9]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(9)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[10]}
-              name={this.state.names[10]}
-              img={this.state.imgs[10]}
-              type={this.state.types[10]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(10)}
           </Col>
-          <Col className="px-2 py-2" xs={6} md={4} lg={3}>
-            <Tile
-              key={this.state.ids[11]}
-              name={this.state.names[11]}
-              img={this.state.imgs[11]}
-              type={this.state.types[11]}
-            />
+          <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+            {this.renderTile(11)}
           </Col>
         </Row>
+          {/* Fourth Row */}
+          <Row>
+            <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+              {this.renderTile(12)}
+            </Col>
+            <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+              {this.renderTile(13)}
+            </Col>
+            <Col className="px-2 py-2" xs={6} md={3} lg={3}>
+              {this.renderTile(14)}
+            </Col>
+          </Row>
+        <Route
+          path={'/Pokemon/'+this.state.ids[0]}
+          render={props => <Card id={this.state.ids[0]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[1]}
+          render={props => <Card id={this.state.ids[1]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[2]}
+          render={props => <Card id={this.state.ids[2]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[3]}
+          render={props => <Card id={this.state.ids[3]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[4]}
+          render={props => <Card id={this.state.ids[4]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[5]}
+          render={props => <Card id={this.state.ids[5]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[6]}
+          render={props => <Card id={this.state.ids[6]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[7]}
+          render={props => <Card id={this.state.ids[7]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[8]}
+          render={props => <Card id={this.state.ids[8]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[9]}
+          render={props => <Card id={this.state.ids[9]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[10]}
+          render={props => <Card id={this.state.ids[10]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[11]}
+          render={props => <Card id={this.state.ids[11]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[12]}
+          render={props => <Card id={this.state.ids[12]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[13]}
+          render={props => <Card id={this.state.ids[13]} />}
+        />
+        <Route
+          path={'/Pokemon/'+this.state.ids[14]}
+          render={props => <Card id={this.state.ids[14]} />}
+        />
       </div>
+      </Router>
     )
   }
 }
-
-export default Body
