@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
 import {Container} from 'reactstrap'
 import './App.css';
 import Body from './components/Body.js'
 import Header from './components/Header.js'
-import Card from './components/PokemonCard/Card.js'
-
 
 export default class App extends Component {
   constructor(){
     super()
     this.state = {
-      data: [null],
+      pokemonData: [null],
       page: 1,
       cardView: false
     }
@@ -19,14 +16,14 @@ export default class App extends Component {
     this.changeCardViewState = this.changeCardViewState.bind(this)
   }
 
-retrieveData(url){
+  retrieveData(url){
     try{
       fetch(url,{
         method: 'GET'
       })
         .then(response => response.json())
         .then(list => this.setState({
-          data: list,
+          pokemonData: list,
           page: list.meta.current_page
           })
         )
@@ -45,26 +42,22 @@ retrieveData(url){
     this.retrieveData("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1")
   }
 
-  handleChange(data){
-    if(data === "forward")
+  handleChange(ev){
+    if(ev === "forward")
     {
       this.setState(prevState =>
         {
-          this.retrieveData(this.state.data.links.next)
+          this.retrieveData(this.state.pokemonData.links.next)
         })
     }
 
-    if(data === "backward")
+    if(ev === "backward")
     {
       this.setState(prevState =>
         {
-          this.retrieveData(this.state.data.links.prev)
+          this.retrieveData(this.state.pokemonData.links.prev)
         })
     }
-  }
-
-  changeCardViewState(){
-    this.setState(prevState => ({cardView: !prevState.cardView}))
   }
 
   render() {
@@ -78,7 +71,7 @@ retrieveData(url){
 
           {/* Pokemon */}
           <Body
-            data={this.state.data}
+            pokemonData={this.state.pokemonData}
             changeCardView={this.changeCardViewState}
             cardView={this.state.cardView}
           />

@@ -1,24 +1,45 @@
 import React, { Component } from 'react'
-import './Card.css'
-import CardHeader from './CardNavigation/CardHeader.js'
+import CardHeader from './CardHeader/CardHeader.js'
 import CardBody from './CardBody/CardBody.js'
 import {Container} from 'reactstrap'
-
+import './Card.css'
 
 export default class Card extends Component{
+  constructor(){
+    super()
+    this.state = {
+      info: [null]
+    }
+  }
+
+  componentDidMount() {
+    // try{
+      fetch('https://intern-pokedex.myriadapps.com/api/v1/pokemon/'+this.props.match.params.id,{
+        method: 'GET'
+      })
+        .then(response => response.json())
+        .then(list => this.setState({
+          info: list.data,
+          })
+        )
+    // }
+    // catch(e){
+    //   //Do nothing when page isn't reacheable. Keeps pages in range
+    //   // 1 < page < 37
+    // }
+  }
+
   render(){
+    console.log(this.state.info)
     return(
-      <div className="container-fluid">
-        <Container className="container-fluid inner-container">
-          <h1>{this.props.id} </h1>
-          {/*Navigation*/}
-          <CardHeader />
+      <Container>
+        {/*Navigation*/}
+        <CardHeader />
 
-          {/*Body*/}
-          <CardBody />
+        {/*Body*/}
+        <CardBody />
 
-        </Container>
-      </div>
+      </Container>
     )
   }
 }

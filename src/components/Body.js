@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Tile from './Tile/Tile.js'
 import {Row, Col } from 'reactstrap'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import Card from './PokemonCard/Card.js'
 
 export default class Body extends Component {
@@ -14,10 +14,11 @@ export default class Body extends Component {
       types: [],
     }
     this.renderTile = this.renderTile.bind(this)
+    this.renderCard = this.renderCard.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    const list = nextProps.data.data
+    const list = nextProps.pokemonData.data
     this.setState({
       ids: list.map(item => item.id),
       names: list.map(item => item.name),
@@ -30,8 +31,7 @@ export default class Body extends Component {
     if(!this.props.cardView)
     {
       return(
-        <Link
-          to= {'/Pokemon/'+this.state.ids[num]}
+        <Link to={`/Pokemon/`+this.state.ids[num]}
           onClick={() => this.props.changeCardView()}
         >
           <Tile
@@ -45,10 +45,20 @@ export default class Body extends Component {
     }
   }
 
+  renderCard(){
+    if(this.props.cardView)
+    {
+      return(
+        <Route
+          path='/Pokemon/:id'
+          component= {Card}
+        />
+      )
+    }
+  }
+
   render() {
-    console.log(this.props.cardView)
     return(
-      <Router>
       <div>
         {/* First Row */}
         <Row>
@@ -107,68 +117,8 @@ export default class Body extends Component {
               {this.renderTile(14)}
             </Col>
           </Row>
-        <Route
-          path={'/Pokemon/'+this.state.ids[0]}
-          render={props => <Card id={this.state.ids[0]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[1]}
-          render={props => <Card id={this.state.ids[1]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[2]}
-          render={props => <Card id={this.state.ids[2]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[3]}
-          render={props => <Card id={this.state.ids[3]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[4]}
-          render={props => <Card id={this.state.ids[4]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[5]}
-          render={props => <Card id={this.state.ids[5]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[6]}
-          render={props => <Card id={this.state.ids[6]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[7]}
-          render={props => <Card id={this.state.ids[7]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[8]}
-          render={props => <Card id={this.state.ids[8]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[9]}
-          render={props => <Card id={this.state.ids[9]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[10]}
-          render={props => <Card id={this.state.ids[10]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[11]}
-          render={props => <Card id={this.state.ids[11]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[12]}
-          render={props => <Card id={this.state.ids[12]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[13]}
-          render={props => <Card id={this.state.ids[13]} />}
-        />
-        <Route
-          path={'/Pokemon/'+this.state.ids[14]}
-          render={props => <Card id={this.state.ids[14]} />}
-        />
+          {this.renderCard()}
       </div>
-      </Router>
     )
   }
 }
