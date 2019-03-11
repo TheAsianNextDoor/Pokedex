@@ -1,0 +1,149 @@
+@media(max-width: 990px){
+  .margin{
+    margin-left: 2rem;
+  }
+}
+
+@media screen and (max-width: 533px)
+{
+  .smallScreenRemove{
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 766px){
+  .cardStyle{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 767px){
+  .cardStyle{
+    width: 80%;
+  }
+}
+.cardTitleName{
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 24px;
+  display: inline;
+  float: left;
+}
+.titleType{
+  background-color: rgba(112, 112, 72, 0.08);
+  border: 1px solid rgba(112, 112, 72, 1);
+  border-radius: 4px;
+  display: inline;
+  font-size: 16px;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.cardTitlePadding{
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.cardTitleID{
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 24px;
+  display: inline;
+  padding-left: 1rem;
+  float: left;
+}
+.cardTitleAbilities{
+  font-family: 'SF UI Text';
+  font-size: 12px;
+  color: rgba(112, 112, 72, 1);
+  float: right;
+  padding-right: 1rem;
+  line-height: 20px;
+  display: inline;
+}
+.cardTitleBreak{
+  margin-top: 2rem;
+  width: 100%;
+}
+.pokemonImage{
+  width: 130px;
+  height: 130px;
+}
+.align-left{
+  text-align: left;
+}
+.align-center{
+  text-align: center;
+}
+.align-right{
+  text-align: right;
+}
+.display-block{
+  display: inline-block;
+}
+.statsSectionTitle{
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
+  line-height: 22px;
+  margin-bottom: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.statPadding{
+  padding-top: .4rem;
+}
+.genusTitle{
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 24px;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  margin-bottom: 0px;
+}
+.description{
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: left;
+  line-height: 24px;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  padding-top: 0px;
+}
+.profileTitleColor{
+  padding-top: .2rem;
+  background-color: rgba(85, 166, 156, 1);
+  display: inline-block;
+  width: 90%;
+}
+.profileTitle{
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  line-height: 24px;
+  padding-left: 1rem;
+}
+.profileKey{
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 24px;
+}
+.cardStyle{
+  text-align: center;
+  display: inline-block;
+  height: 784px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 2px;
+}

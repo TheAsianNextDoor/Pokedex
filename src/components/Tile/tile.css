@@ -1,7 +1,8 @@
 .tile{
   background-color: rgba(255, 255, 255, 1);
-  height: 252px;
+  height: 245px;
   border-radius: 3px;
+  text-align: center;
 }
 
 .tile-header-name{
@@ -11,6 +12,7 @@
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
   font-size: 20px;
+  text-align: left;
 }
 
 .tile-img{

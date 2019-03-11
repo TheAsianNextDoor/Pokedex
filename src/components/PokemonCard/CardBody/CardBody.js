@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './CardBody.css'
-import PokemonBody from './CardStats.js'
+import PokemonStats from './CardStats.js'
 import PokemonProfile from './CardProfile.js'
 import PokemonTitle from './CardTitle.js'
 
@@ -8,15 +8,15 @@ import PokemonTitle from './CardTitle.js'
 export default class CardBody extends Component {
   render() {
     return (
-      <div>
+      <div className="cardStyle">
         {/*Navigation, Pokemon Name and Type*/}
-        <PokemonTitle />
+        <PokemonTitle {...this.props}/>
 
         {/*Pokemon image, stats, description*/}
-        <PokemonBody />
+        <PokemonStats {...this.props}/>
 
         {/*Pokemon info*/}
-        <PokemonProfile />
+        <PokemonProfile {...this.props}/>
       </div>
     )
   }

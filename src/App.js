@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Container} from 'reactstrap'
 import './App.css';
 import Body from './components/Body.js'
 import Header from './components/Header.js'
@@ -63,7 +62,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <Container className="container-fluid inner-container">
+        <div className="inner-container">
           <span>Page Number: {this.state.page}</span>
 
           {/*Backward button, search bar, forward button*/}
@@ -76,7 +75,7 @@ export default class App extends Component {
             cardView={this.state.cardView}
           />
 
-        </Container>
+        </div>
       </div>
     )
   }
