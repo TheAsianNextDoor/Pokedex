@@ -1,24 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {CardStats} from './CardStats.js'
+import {CardProfile} from './CardProfile.js'
+import {CardTitle} from './CardTitle.js'
 import './CardBody.css'
-import PokemonStats from './CardStats.js'
-import PokemonProfile from './CardProfile.js'
-import PokemonTitle from './CardTitle.js'
 
+export const CardBody = ({ info }) => (
+    <div className="cardStyle">
+      {/*Navigation, Pokemon Name and Type*/}
+      <CardTitle info={info}/>
 
-export default class CardBody extends Component {
-  render() {
-    return (
-      <div className="cardStyle">
-        {/*Navigation, Pokemon Name and Type*/}
-        <PokemonTitle {...this.props}/>
+      {/*Pokemon image, stats, description*/}
+      <CardStats info={info}/>
 
-        {/*Pokemon image, stats, description*/}
-        <PokemonStats {...this.props}/>
-
-        {/*Pokemon info*/}
-        <PokemonProfile {...this.props}/>
-      </div>
-    )
-  }
-
-}
+      {/*Pokemon info*/}
+      <CardProfile info={info}/>
+    </div>
+)

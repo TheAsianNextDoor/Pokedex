@@ -3,20 +3,21 @@ import {Row, Col } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 
 import Card from './PokemonCard/Card.js'
-import Tile from './Tile/Tile.js'
+import {Tile} from './Tile/Tile.js'
 import './Body.css'
 
 export default class Body extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       ids: [],
       names: [],
       imgs: [],
       types: [],
+      size: 0,
     }
-    this.renderTile = this.renderTile.bind(this)
     this.renderCard = this.renderCard.bind(this)
+    this.updateCardView = this.updateCardView.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,22 +27,8 @@ export default class Body extends Component {
       names: list.map(item => item.name),
       imgs: list.map(item => item.image),
       types: list.map(item => item.types),
+      size: list.length,
     })
-  }
-
-  renderTile(num){
-    return(
-      <Link to={`/Pokemon/`+this.state.ids[num]}
-        onClick={() => this.props.changeCardView()}
-      >
-        <Tile
-          key={this.state.ids[num]}
-          name={this.state.names[num]}
-          img={this.state.imgs[num]}
-          type={this.state.types[num]}
-        />
-      </Link>
-    )
   }
 
   renderCard(){
@@ -53,74 +40,74 @@ export default class Body extends Component {
     )
   }
 
+  updateCardView(){
+    this.props.changeCardView()
+  }
+
   render() {
+    const {size, ids, names, imgs, types} = this.state
+
+    // all tiles fetched
+    let finalOutput = []
+    // output of tiles to be wrapped in Row
+    let rowOutput = []
+    // keeps track of current index
+    let arrayIndex = 0
+    // tiles per rows
+    let tileCount = 4
+    // i = numbers of rows
+    for(let i = 0; i < (size/tileCount); i++)
+    {
+      // captures indexCount for begining of each row
+      let initialRowIndex = arrayIndex
+      // j = number of items per row
+      for(let j = 0; (size-initialRowIndex) < tileCount ? j < (size%tileCount): j < tileCount; j++)
+      {
+        rowOutput.push(
+          // create reactstrap column and react router link
+          <Col key={ids[arrayIndex]} className="tilePadding" xs='6' sm='6' md='3' lg='3'>
+            <Link
+              key={ids[arrayIndex]}
+              to={{
+                pathname: `/Pokemon/`+names[arrayIndex],
+                state: {
+                  id: ids[arrayIndex]
+                }
+              }}
+              onClick={this.updateCardView}
+            >
+              <Tile
+                key={ids[arrayIndex]}
+                name={names[arrayIndex]}
+                img={imgs[arrayIndex]}
+                type={types[arrayIndex]}
+              />
+            </Link>
+          </Col>
+        )
+        arrayIndex++
+      }
+      // wraps row around tileCount number of Columns
+      finalOutput.push(<Row key={i}> {rowOutput} </Row>)
+      // clear the row
+      rowOutput = []
+    }
+
     if(!this.props.cardView)
     {
       return(
         <div className="bodySize">
-          {/* First Row */}
-          <Row>
-            <Col className="tilePadding" xs={6} sm={6} md={3} lg={3}>
-              {this.renderTile(0)}
-            </Col>
-            <Col className="tilePadding" xs={6} sm={6} md={3} lg={3}>
-              {this.renderTile(1)}
-            </Col>
-            <Col className="tilePadding" xs={6} sm={6} md={3} lg={3}>
-              {this.renderTile(2)}
-            </Col>
-            <Col className="tilePadding" xs={6} sm={6} md={3} lg={3}>
-              {this.renderTile(3)}
-            </Col>
-          </Row>
-          {/* Second Row */}
-          <Row>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(4)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(5)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(6)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(7)}
-            </Col>
-          </Row>
-          {/* Third Row */}
-          <Row>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(8)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(9)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(10)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(11)}
-            </Col>
-          </Row>
-          {/* Fourth Row */}
-          <Row>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(12)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(13)}
-            </Col>
-            <Col className="tilePadding" xs={6} md={3} lg={3}>
-              {this.renderTile(14)}
-            </Col>
-          </Row>
+          {finalOutput}
         </div>
       )
     }
     else{
       return(
-        <div>{this.renderCard()}</div>
+        <Route
+          path='/Pokemon/:name'
+          // component={Card}
+          render={(props) => <Card {...props} getName={this.props.getName}/>}
+        />
       )
     }
   }

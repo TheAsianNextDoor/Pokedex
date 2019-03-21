@@ -1,0 +1,10 @@
+.pokemonName{
+  height: 24px;
+  width: 401px;
+  font-family: 'Roboto';
+  font-size: 72px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  line-height: 24px;
+}

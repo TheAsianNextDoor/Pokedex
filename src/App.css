@@ -1,24 +1,24 @@
-@media only screen and (max-width: 700px){
-  .inner-container{
+@media only screen and (max-width: 700px) {
+  .inner-container {
     width: 97%;
   }
 }
-@media only screen and (min-width: 900px){
-  .inner-container{
+
+@media only screen and (min-width: 900px) {
+  .inner-container {
     width: 80%;
   }
 }
 
-.container-fluid{
+.container-fluid {
   height: 1025px;
   background-color: rgba(85, 166, 156, 1);
   text-align: center;
   padding-left: .7rem;
   padding-right: .7rem;
   overflow: auto;
-
-
 }
-.inner-container{
+
+.inner-container {
   display: inline-block;
 }

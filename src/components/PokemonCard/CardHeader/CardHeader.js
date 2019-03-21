@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class CardHeader extends Component {
+import './CardHeader.css'
 
-  render() {
-    return (
-      <div></div>
-    );
-  }
-
+export const CardHeader = ({ name }) => {
+  return (
+    <>
+    </>
+  )
 }

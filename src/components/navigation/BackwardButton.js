@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './navigation.css'
 
-export default class BackwardButton extends Component {
-  render() {
-    return(
-      <div className="text-center">
-        <i
-          onClick={() => this.props.action("backward")}
-          className="fas fa-arrow-alt-circle-left fa-4x arrow">
-        </i>
-      </div>
-    )
-  }
+export const BackwardButton = ({ action }) => {
+  return(
+    <div className="text-center">
+      <i
+        onClick={() => action("backward")}
+        className="fas fa-arrow-alt-circle-left fa-4x arrow">
+      </i>
+    </div>
+  )
 }

@@ -1,26 +1,28 @@
-@media(max-width: 990px){
-  .margin{
+@media(max-width: 990px) {
+  .margin {
     margin-left: 2rem;
   }
 }
 
-@media screen and (max-width: 533px)
-{
-  .smallScreenRemove{
+@media screen and (max-width: 533px) {
+  .smallScreenRemove {
     display: none !important;
   }
 }
-@media only screen and (max-width: 766px){
-  .cardStyle{
+
+@media only screen and (max-width: 766px) {
+  .cardStyle {
     width: 100%;
   }
 }
-@media only screen and (min-width: 767px){
-  .cardStyle{
+
+@media only screen and (min-width: 767px) {
+  .cardStyle {
     width: 80%;
   }
 }
-.cardTitleName{
+
+.cardTitleName {
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: bold;
@@ -29,7 +31,8 @@
   display: inline;
   float: left;
 }
-.titleType{
+
+.titleType {
   background-color: rgba(112, 112, 72, 0.08);
   border: 1px solid rgba(112, 112, 72, 1);
   border-radius: 4px;
@@ -38,13 +41,15 @@
   padding-left: .5rem;
   padding-right: .5rem;
 }
-.cardTitlePadding{
+
+.cardTitlePadding {
   padding-bottom: 1rem;
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.cardTitleID{
+
+.cardTitleID {
   font-family: 'Roboto';
   font-size: 16px;
   font-weight: bold;
@@ -54,7 +59,8 @@
   padding-left: 1rem;
   float: left;
 }
-.cardTitleAbilities{
+
+.cardTitleAbilities {
   font-family: 'SF UI Text';
   font-size: 12px;
   color: rgba(112, 112, 72, 1);
@@ -63,27 +69,34 @@
   line-height: 20px;
   display: inline;
 }
-.cardTitleBreak{
+
+.cardTitleBreak {
   margin-top: 2rem;
   width: 100%;
 }
-.pokemonImage{
+
+.pokemonImage {
   width: 130px;
   height: 130px;
 }
-.align-left{
+
+.align-left {
   text-align: left;
 }
-.align-center{
+
+.align-center {
   text-align: center;
 }
-.align-right{
+
+.align-right {
   text-align: right;
 }
-.display-block{
+
+.display-block {
   display: inline-block;
 }
-.statsSectionTitle{
+
+.statsSectionTitle {
   font-family: 'Roboto';
   font-size: 16px;
   color: rgba(0, 0, 0, 1);
@@ -94,10 +107,12 @@
   font-weight: bold;
   white-space: nowrap;
 }
-.statPadding{
+
+.statPadding {
   padding-top: .4rem;
 }
-.genusTitle{
+
+.genusTitle {
   font-family: 'Roboto';
   font-size: 16px;
   font-weight: bold;
@@ -107,7 +122,8 @@
   padding-top: 2rem;
   margin-bottom: 0px;
 }
-.description{
+
+.description {
   font-family: 'Roboto';
   font-size: 16px;
   color: rgba(0, 0, 0, 0.85);
@@ -118,13 +134,15 @@
   padding-right: 2rem;
   padding-top: 0px;
 }
-.profileTitleColor{
+
+.profileTitleColor {
   padding-top: .2rem;
   background-color: rgba(85, 166, 156, 1);
   display: inline-block;
   width: 90%;
 }
-.profileTitle{
+
+.profileTitle {
   font-family: 'Roboto';
   font-size: 16px;
   font-weight: bold;
@@ -133,14 +151,16 @@
   line-height: 24px;
   padding-left: 1rem;
 }
-.profileKey{
+
+.profileKey {
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
   line-height: 24px;
 }
-.cardStyle{
+
+.cardStyle {
   text-align: center;
   display: inline-block;
   height: 784px;

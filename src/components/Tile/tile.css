@@ -1,11 +1,11 @@
-.tile{
+.tile {
   background-color: rgba(255, 255, 255, 1);
   height: 245px;
   border-radius: 3px;
   text-align: center;
 }
 
-.tile-header-name{
+.tile-header-name {
   padding-left: 30px;
   padding-top: 10px;
   font-family: Roboto;
@@ -15,12 +15,12 @@
   text-align: left;
 }
 
-.tile-img{
+.tile-img {
   height: 104px;
   width: 104px;
 }
 
-.tile-footer{
+.tile-footer {
   padding-left: 7px;
   padding-right: 7px;
   font-family: 'SF UI Text';

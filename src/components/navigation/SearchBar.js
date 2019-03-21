@@ -1,7 +1,7 @@
 import React from 'react'
 import './navigation.css'
 
-export default function SearchBar(){
+export const SearchBar = () => {
   return(
     <div className="px-0 mx-0">
       <input

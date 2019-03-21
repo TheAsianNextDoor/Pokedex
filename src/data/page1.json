@@ -1,0 +1,93 @@
+{
+  "data": [{
+    "id": 1,
+    "name": "Bulbasaur",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/1.png",
+    "types": ["poison", "grass"]
+  }, {
+    "id": 2,
+    "name": "Ivysaur",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/2.png",
+    "types": ["poison", "grass"]
+  }, {
+    "id": 3,
+    "name": "Venusaur",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/3.png",
+    "types": ["poison", "grass"]
+  }, {
+    "id": 4,
+    "name": "Charmander",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/4.png",
+    "types": ["fire"]
+  }, {
+    "id": 5,
+    "name": "Charmeleon",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/5.png",
+    "types": ["fire"]
+  }, {
+    "id": 6,
+    "name": "Charizard",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/6.png",
+    "types": ["flying", "fire"]
+  }, {
+    "id": 7,
+    "name": "Squirtle",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/7.png",
+    "types": ["water"]
+  }, {
+    "id": 8,
+    "name": "Wartortle",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/8.png",
+    "types": ["water"]
+  }, {
+    "id": 9,
+    "name": "Blastoise",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/9.png",
+    "types": ["water"]
+  }, {
+    "id": 10,
+    "name": "Caterpie",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/10.png",
+    "types": ["bug"]
+  }, {
+    "id": 11,
+    "name": "Metapod",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/11.png",
+    "types": ["bug"]
+  }, {
+    "id": 12,
+    "name": "Butterfree",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/12.png",
+    "types": ["flying", "bug"]
+  }, {
+    "id": 13,
+    "name": "Weedle",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/13.png",
+    "types": ["poison", "bug"]
+  }, {
+    "id": 14,
+    "name": "Kakuna",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/14.png",
+    "types": ["poison", "bug"]
+  }, {
+    "id": 15,
+    "name": "Beedrill",
+    "image": "https:\/\/intern-pokedex.myriadapps.com\/images\/pokemon\/15.png",
+    "types": ["poison", "bug"]
+  }],
+  "links": {
+    "first": "https:\/\/intern-pokedex.myriadapps.com\/api\/v1\/pokemon?page=1",
+    "last": "https:\/\/intern-pokedex.myriadapps.com\/api\/v1\/pokemon?page=37",
+    "prev": null,
+    "next": "https:\/\/intern-pokedex.myriadapps.com\/api\/v1\/pokemon?page=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 37,
+    "path": "https:\/\/intern-pokedex.myriadapps.com\/api\/v1\/pokemon",
+    "per_page": 15,
+    "to": 15,
+    "total": 553
+  }
+}
