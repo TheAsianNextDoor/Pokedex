@@ -14,27 +14,26 @@ export default class Card extends Component {
   }
 
   componentDidMount() {
-    // fetch('https://intern-pokedex.myriadapps.com/api/v1/pokemon/' + this.props.location.state.id, {
-    //     method: 'GET'
-    //   })
-    //   .then(response => response.json())
-    //   .then(list => this.setState(() => {
-    //     return {
-    //       info: list.data
-    //     }
-    //   }))
+    fetch('https://intern-pokedex.myriadapps.com/api/v1/pokemon/' + this.props.location.state.id, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(list => this.setState(() => {
+        return {
+          info: list.data
+        }
+      }))
 
-    let data = require('../../data/bulbasaur.json')
-    this.setState(() => {
-      return{
-        info: data.data,
-    }})
+    // let data = require('../../data/bulbasaur.json')
+    // this.setState(() => {
+    //   return{
+    //     info: data.data,
+    // }})
 
     this.props.getName(this.props.match.params.name)
   }
 
   render(){
-    console.log(this.props)
     return(
       <Container className="cardContainer">
         {/*Navigation*/}

@@ -69,7 +69,7 @@ export default class Body extends Component {
             <Link
               key={ids[arrayIndex]}
               to={{
-                pathname: `/Pokemon/`+names[arrayIndex],
+                pathname: `/Pokedex/Pokemon/`+names[arrayIndex],
                 state: {
                   id: ids[arrayIndex]
                 }
@@ -104,7 +104,7 @@ export default class Body extends Component {
     else{
       return(
         <Route
-          path='/Pokemon/:name'
+          path='/Pokedex/Pokemon/:name'
           // component={Card}
           render={(props) => <Card {...props} getName={this.props.getName}/>}
         />
