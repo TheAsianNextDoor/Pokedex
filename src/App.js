@@ -16,10 +16,10 @@ export default class App extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.changeCardView = this.changeCardView.bind(this)
     this.getName = this.getName.bind(this)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
   retrieveData(url) {
-
   fetch(url, {
         method: 'GET'
       })
@@ -28,6 +28,10 @@ export default class App extends Component {
         pokemonData: list,
         page: list.meta.current_page
       }))
+  }
+
+  handleSearchChange(input){
+    this.retrieveData("https://intern-pokedex.myriadapps.com/api/v1/pokemon?name="+input)
   }
 
   changeCardView() {
@@ -82,12 +86,10 @@ export default class App extends Component {
   }
 
   render() {
-    const {cardView, pokemonData, page, name} = this.state
+    const { cardView, pokemonData, page, name } = this.state
     return (
       <div className="container-fluid">
         <div className="inner-container">
-          <span>Page Number: {page}</span>
-
           {/*Backward button, search bar, forward button*/}
           <Header
             action={this.handleChange}
@@ -95,6 +97,7 @@ export default class App extends Component {
             cardView={cardView}
             name={name}
             page={page}
+            handleSearchChange={this.handleSearchChange}
           />
 
           {/* Pokemon */}
