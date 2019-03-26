@@ -1,16 +1,20 @@
 import React from 'react'
+
 import './navigation.css'
 
-export const SearchBar = ({ handleSearchChange }) => {
+export const SearchBar = ({ searchValue, handleSearchChange}) => {
+
   return(
-    <form className='px-0 mx-0'>
-      <input
-        type='text'
-        id='search-bar'
-        placeholder='Pokedex'
-        onChange={(ev) => handleSearchChange(ev.target.value)}
-        autoComplete='off'
-        />
+      <form onSubmit={(ev) => ev.preventDefault()} className='px-0 mx-0'>
+        <input
+          type='text'
+          id='search-bar'
+          placeholder='Pokedex'
+          defaultValue={searchValue || ''}
+          onChange={(ev) => handleSearchChange(ev.target.value)}
+          autoComplete='off'
+          autoFocus
+          />
     </form>
   )
 }

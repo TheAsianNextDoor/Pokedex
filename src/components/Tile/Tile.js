@@ -1,13 +1,13 @@
 import React from 'react'
-import {TileHeader} from "./TileHeader"
-import {TileImage} from "./TileImage"
-import {TileFooter} from "./TileFooter"
+import {TileHeader} from './TileHeader'
+import {TileImage} from './TileImage'
+import {TileFooter} from './TileFooter'
 import './tile.css'
 
 export const Tile = ({ name, img, type }) =>
 {
   return(
-    <div className="tile">
+    <div className='tile'>
       <TileHeader name={name}/>
       <TileImage img={img}/>
       <TileFooter type={type}/>

@@ -8,12 +8,13 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      pokemonData: [null],
+      pokemonData: [],
       page: 1,
       name: '',
-      cardView: false
+      cardView: false,
+      searchValue: ''
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.handleNavChange = this.handleNavChange.bind(this)
     this.changeCardView = this.changeCardView.bind(this)
     this.getName = this.getName.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -31,7 +32,10 @@ export default class App extends Component {
   }
 
   handleSearchChange(input){
-    this.retrieveData("https://intern-pokedex.myriadapps.com/api/v1/pokemon?name="+input)
+    this.retrieveData('https://intern-pokedex.myriadapps.com/api/v1/pokemon?name='+input)
+    this.setState({
+      searchValue: input
+    })
   }
 
   changeCardView() {
@@ -41,7 +45,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.retrieveData("https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1")
+    this.retrieveData('https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1')
+    // this.props.history.push('/Pokedex/Page/1');
 
     // let data = require('./data/page1.json')
     // this.setState({
@@ -56,12 +61,12 @@ export default class App extends Component {
     })
   }
 
-  handleChange(ev) {
-    if (ev === "forward" && this.state.page !== this.state.pokemonData.meta.last_page) {
+  handleNavChange(ev) {
+    if (ev === 'forward' && this.state.page !== this.state.pokemonData.meta.last_page) {
       this.setState(prevState => {
         this.retrieveData(this.state.pokemonData.links.next)
       })
-    this.props.history.push("/Pokedex/Page/"+(this.state.page+1));
+    this.props.history.push('/Pokedex/Page/'+(this.state.page+1));
 
 
       // let data = require('./data/page2.json')
@@ -71,11 +76,11 @@ export default class App extends Component {
       // })
     }
 
-    if (ev === "backward" && this.state.page !== this.state.pokemonData.meta.from) {
+    if (ev === 'backward' && this.state.page !== this.state.pokemonData.meta.from) {
       this.setState(prevState => {
         this.retrieveData(this.state.pokemonData.links.prev)
       })
-    this.props.history.push("/Pokedex/Page/"+(this.state.page-1));
+    this.props.history.push('/Pokedex/Page/'+(this.state.page-1));
 
       // let data = require('./data/page1.json')
       // this.setState({
@@ -86,15 +91,16 @@ export default class App extends Component {
   }
 
   render() {
-    const { cardView, pokemonData, page, name } = this.state
+    const { searchValue, cardView, pokemonData, page, name } = this.state
     return (
-      <div className="container-fluid">
-        <div className="inner-container">
+      <div className='container-fluid'>
+        <div className='inner-container'>
           {/*Backward button, search bar, forward button*/}
           <Header
-            action={this.handleChange}
+            handleNavChange={this.handleNavChange}
             changeCardView={this.changeCardView}
             cardView={cardView}
+            searchValue = {searchValue}
             name={name}
             page={page}
             handleSearchChange={this.handleSearchChange}

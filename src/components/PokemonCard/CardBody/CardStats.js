@@ -7,12 +7,12 @@ export const CardStats = ({ info }) => {
   const spAtk = ((info || {}).stats || {})['special-attack']
   const spDef = ((info || {}).stats || {})['special-defense']
 
-  const hpPercent = (hp/250) * 100
-  const attackPercent = (attack/140) * 100
-  const defensePercent = (hp/120) * 100
-  const speedPercent = (hp/110) * 100
-  const spAtkPercent = (hp/150) * 100
-  const spDefPercent = (hp/150) * 100
+  const hpPercent = (hp/255) * 100
+  const attackPercent = (attack/165) * 100
+  const defensePercent = (defense/200) * 100
+  const speedPercent = (speed/130) * 100
+  const spAtkPercent = (spAtk/150) * 100
+  const spDefPercent = (spDef/200) * 100
 
   return (
     <Container className='pt-1'>
@@ -61,10 +61,10 @@ export const CardStats = ({ info }) => {
           </Col>
         </Col>
       </Row>
-      <h2 className="genusTitle align-left">{info.genus}</h2>
+      <h2 className='genusTitle align-left'>{info.genus}</h2>
       <Row className='pt-2'>
         <Col lg={12}>
-        <h2 className="description align-left">{info.description}</h2>
+        <h2 className='description align-left'>{info.description}</h2>
         </Col>
       </Row>
     </Container>

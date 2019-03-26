@@ -35,7 +35,7 @@ export default class Card extends Component {
 
   render(){
     return(
-      <Container className="cardContainer">
+      <Container className='cardContainer'>
         {/*Navigation*/}
         <CardHeader name={this.state.info.name}/>
 

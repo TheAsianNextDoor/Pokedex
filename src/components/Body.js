@@ -65,7 +65,7 @@ export default class Body extends Component {
       {
         rowOutput.push(
           // create reactstrap column and react router link
-          <Col key={ids[arrayIndex]} className="tilePadding" xs='6' sm='6' md='3' lg='3'>
+          <Col key={ids[arrayIndex]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
             <Link
               key={ids[arrayIndex]}
               to={{
@@ -96,7 +96,7 @@ export default class Body extends Component {
     if(!this.props.cardView)
     {
       return(
-        <div className="bodySize">
+        <div className='bodySize'>
           {finalOutput}
         </div>
       )

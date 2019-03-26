@@ -1,11 +1,11 @@
 import React from 'react'
 import './navigation.css'
 
-export const ForwardButton = ({ action, page }) => {
+export const ForwardButton = ({ handleNavChange }) => {
   return(
     <i
-      onClick={() => action("forward")}
-      className="fas fa-arrow-alt-circle-right fa-4x arrow">
+      onClick={() => handleNavChange('forward')}
+      className='fas fa-arrow-alt-circle-right fa-4x arrow'>
     </i>
   )
 }
