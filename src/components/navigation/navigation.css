@@ -1,4 +1,4 @@
-#search-bar {
+#searchBar {
   background-color: rgba(80, 155, 146, 1);
   width: 100%;
   font-family: 'Roboto';
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-#search-bar:focus {
+#searchBar:focus {
   outline: none;
 }
 
@@ -22,6 +22,11 @@
 .arrow {
   transform: translateY(50%);
   color: white;
+}
+
+.arrowDisabled{
+  transform: translateY(50%);
+  color: grey;
 }
 
 .arrow:hover {

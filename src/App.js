@@ -41,7 +41,8 @@ export default class App extends Component {
   changeCardView() {
     this.setState(prevState => ({
       cardView: !prevState.cardView
-    }))
+    })
+    )
   }
 
   componentDidMount() {
@@ -63,10 +64,12 @@ export default class App extends Component {
 
   handleNavChange(ev) {
     if (ev === 'forward' && this.state.page !== this.state.pokemonData.meta.last_page) {
+      this.props.history.push('/Pokedex/Page/'+(this.state.page+1));
       this.setState(prevState => {
-        this.retrieveData(this.state.pokemonData.links.next)
+        return{
+        }
       })
-    this.props.history.push('/Pokedex/Page/'+(this.state.page+1));
+      this.retrieveData(this.state.pokemonData.links.next)
 
 
       // let data = require('./data/page2.json')
@@ -77,10 +80,12 @@ export default class App extends Component {
     }
 
     if (ev === 'backward' && this.state.page !== this.state.pokemonData.meta.from) {
+      this.props.history.push('/Pokedex/Page/'+(this.state.page-1));
       this.setState(prevState => {
-        this.retrieveData(this.state.pokemonData.links.prev)
+        return{
+        }
       })
-    this.props.history.push('/Pokedex/Page/'+(this.state.page-1));
+      this.retrieveData(this.state.pokemonData.links.prev)
 
       // let data = require('./data/page1.json')
       // this.setState({
