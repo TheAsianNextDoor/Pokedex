@@ -1,21 +1,22 @@
-import React from 'react'
-import './navigation.css'
+import React from 'react';
+import './navigation.css';
 
 export const ForwardButton = ({ handleNavChange, searchValue }) => {
-  if(searchValue === '')
-  {
-    return(
+  if (searchValue === '') {
+    return (
       <i
         onClick={() => handleNavChange('forward')}
-        className='fas fa-arrow-alt-circle-right fa-4x arrow'>
-      </i>
-    )
+        className="fas fa-arrow-alt-circle-right fa-4x arrow"
+        role="navigation"
+      />
+    );
   }
-  else{
-    return(
-      <i
-        className='fas fa-arrow-alt-circle-right fa-4x arrowDisabled'>
-      </i>
-    )
-  }
-}
+
+  return (
+    <i
+      className="fas fa-arrow-alt-circle-right fa-4x arrowDisabled"
+    />
+  );
+};
+
+export default ForwardButton;

@@ -1,28 +1,26 @@
-import React, { Component } from 'react'
-import {CardHeader} from './CardHeader/CardHeader.js'
-import {CardBody} from './CardBody/CardBody.js'
-import {Container} from 'reactstrap'
-
-import './Card.css'
+import React, { Component } from 'react';
+import { Container } from 'reactstrap';
+import { CardHeader } from './CardHeader/CardHeader';
+import { CardBody } from './CardBody/CardBody';
+import './Card.css';
 
 export default class Card extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      info: []
-    }
+      info: [],
+    };
   }
 
   componentDidMount() {
-    fetch('https://intern-pokedex.myriadapps.com/api/v1/pokemon/' + this.props.location.state.id, {
-        method: 'GET'
-      })
+    const { location, match, getName } = this.props;
+    fetch(`https://intern-pokedex.myriadapps.com/api/v1/pokemon/${location.state.id}`, {
+      method: 'GET',
+    })
       .then(response => response.json())
-      .then(list => this.setState(() => {
-        return {
-          info: list.data
-        }
-      }))
+      .then(list => this.setState(() => ({
+        info: list.data,
+      })));
 
     // let data = require('../../data/bulbasaur.json')
     // this.setState(() => {
@@ -30,19 +28,20 @@ export default class Card extends Component {
     //     info: data.data,
     // }})
 
-    this.props.getName(this.props.match.params.name)
+    getName(match.params.name);
   }
 
-  render(){
-    return(
-      <Container className='cardContainer'>
-        {/*Navigation*/}
-        <CardHeader name={this.state.info.name}/>
+  render() {
+    const { info } = this.state;
+    return (
+      <Container className="cardContainer">
+        {/* Navigation */}
+        <CardHeader name={info.name} />
 
-        {/*Body*/}
-        <CardBody info={this.state.info}/>
+        {/* Body */}
+        <CardBody info={info} />
 
       </Container>
-    )
+    );
   }
 }

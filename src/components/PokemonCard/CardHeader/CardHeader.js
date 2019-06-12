@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import './CardHeader.css'
+import './CardHeader.css';
 
-export const CardHeader = ({ name }) => {
-  return (
-    <>
-    </>
-  )
-}
+export const CardHeader = ({ name }) => (
+  <>
+  </>
+);
+
+export default CardHeader;
