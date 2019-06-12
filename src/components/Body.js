@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Route, Link } from 'react-router-dom';
 import { Tile } from './Tile/Tile';
-
 import Card from './PokemonCard/Card';
 import './Body.css';
 
