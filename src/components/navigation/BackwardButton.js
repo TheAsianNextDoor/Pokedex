@@ -10,6 +10,8 @@ export const BackwardButton = ({
   cardView,
 }) => (
   <i
+    // Changes Cardview functionality and attempts to clean
+    // searchbar input if is not CardView
     onClick={!cardView ? () => {
       handleNavChange('backward');
       document.getElementById('searchBar').value = '';

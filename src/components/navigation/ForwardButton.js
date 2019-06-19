@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './navigation.css';
 
 export const ForwardButton = ({ handleNavChange, searchValue }) => {
+  // Checks if searchbar is active in order to attach function
+  // to button
   if (searchValue === '') {
     return (
       <i
@@ -12,6 +14,7 @@ export const ForwardButton = ({ handleNavChange, searchValue }) => {
       />
     );
   }
+  // grey out nav buttons when searchbar is active
   return (
     <i
       className="fas fa-arrow-alt-circle-right fa-4x arrowDisabled"

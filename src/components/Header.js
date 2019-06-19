@@ -34,6 +34,9 @@ export const Header = ({
     );
   }
 
+  // Conditional render for when in CardView
+  // Replace Searchbar with Pokemon name
+  // and alter back button functionality
   const BackwardButtonRouter = withRouter(BackwardButton);
   return (
     <div className="headerHeight">
