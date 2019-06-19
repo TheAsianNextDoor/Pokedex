@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
+import PropTypes from 'prop-types';
 import { CardHeader } from './CardHeader/CardHeader';
 import { CardBody } from './CardBody/CardBody';
 import './Card.css';
@@ -45,3 +46,9 @@ export default class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  location: PropTypes.string.isRequired,
+  match: PropTypes.string.isRequired,
+  getName: PropTypes.func.isRequired,
+};

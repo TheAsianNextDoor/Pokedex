@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './navigation.css';
 
 export const ForwardButton = ({ handleNavChange, searchValue }) => {
@@ -11,12 +12,16 @@ export const ForwardButton = ({ handleNavChange, searchValue }) => {
       />
     );
   }
-
   return (
     <i
       className="fas fa-arrow-alt-circle-right fa-4x arrowDisabled"
     />
   );
+};
+
+ForwardButton.propTypes = {
+  handleNavChange: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default ForwardButton;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 export const CardProfile = ({ info }) => {
   const {
@@ -58,6 +59,10 @@ kg
       </Container>
     </div>
   );
+};
+
+CardProfile.propTypes = {
+  info: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default CardProfile;

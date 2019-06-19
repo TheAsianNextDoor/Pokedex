@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './tile.css';
 
 export const TileHeader = ({ name }) => (
@@ -7,5 +8,9 @@ export const TileHeader = ({ name }) => (
     <hr className="py-0 my-1" />
   </>
 );
+
+TileHeader.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default TileHeader;

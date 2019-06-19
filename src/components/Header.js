@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import { BackwardButton } from './Navigation/BackwardButton';
 import { ForwardButton } from './Navigation/ForwardButton';
 import { SearchBar } from './Navigation/SearchBar';
@@ -8,12 +9,12 @@ import './Header.css';
 
 export const Header = ({
   searchValue,
-  handleSearchChange,
-  handleNavChange,
-  cardView,
-  changeCardView,
   name,
   page,
+  handleSearchChange,
+  handleNavChange,
+  changeCardView,
+  cardView,
 }) => {
   if (!cardView) {
     return (
@@ -48,6 +49,16 @@ export const Header = ({
       </Row>
     </div>
   );
+};
+
+Header.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
+  handleNavChange: PropTypes.func.isRequired,
+  changeCardView: PropTypes.func.isRequired,
+  cardView: PropTypes.bool.isRequired,
 };
 
 export default Header;

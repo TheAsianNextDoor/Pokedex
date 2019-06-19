@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './tile.css';
 
 export const TileImage = ({ img }) => (
@@ -6,5 +7,9 @@ export const TileImage = ({ img }) => (
     <img src={img} className="tile-img" alt="" />
   </div>
 );
+
+TileImage.propTypes = {
+  img: PropTypes.string.isRequired,
+};
 
 export default TileImage;

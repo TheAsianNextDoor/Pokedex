@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Header } from './components/Header';
-import './App.css';
 import Body from './components/Body';
+import './App.css';
 
 export default class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       pokemonData: [],
       page: 1,
@@ -129,3 +130,7 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  history: PropTypes.string.isRequired,
+};

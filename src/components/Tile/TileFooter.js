@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './tile.css';
 
 export const TileFooter = ({ type }) => (
@@ -11,5 +12,9 @@ export const TileFooter = ({ type }) => (
         }
   </div>
 );
+
+TileFooter.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default TileFooter;

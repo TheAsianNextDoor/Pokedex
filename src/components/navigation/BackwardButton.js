@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './navigation.css';
 
 export const BackwardButton = ({
-  handleNavChange,
   page,
-  cardView,
-  changeCardView,
   history,
+  handleNavChange,
+  changeCardView,
+  cardView,
 }) => (
   <i
     onClick={!cardView ? () => {
@@ -20,5 +21,13 @@ export const BackwardButton = ({
     role="navigation"
   />
 );
+
+BackwardButton.propTypes = {
+  page: PropTypes.string.isRequired,
+  history: PropTypes.string.isRequired,
+  handleNavChange: PropTypes.func.isRequired,
+  changeCardView: PropTypes.func.isRequired,
+  cardView: PropTypes.bool.isRequired,
+};
 
 export default BackwardButton;

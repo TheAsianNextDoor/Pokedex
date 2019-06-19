@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Tile } from './Tile/Tile';
 import Card from './PokemonCard/Card';
 import './Body.css';
@@ -128,3 +129,10 @@ export default class Body extends Component {
     );
   }
 }
+
+Body.propTypes = {
+  pokemonData: PropTypes.instanceOf(Array).isRequired,
+  getName: PropTypes.func.isRequired,
+  changeCardView: PropTypes.func.isRequired,
+  cardView: PropTypes.bool.isRequired,
+};
