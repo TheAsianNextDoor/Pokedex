@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { CardHeader } from './CardHeader/CardHeader';
 import { CardBody } from './CardBody/CardBody';
 import './Card.css';
 
@@ -36,9 +35,6 @@ export default class Card extends Component {
     const { info } = this.state;
     return (
       <Container className="cardContainer">
-        {/* Navigation */}
-        <CardHeader name={info.name} />
-
         {/* Body */}
         <CardBody info={info} />
 
