@@ -1,8 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import PropTypes from 'prop-types';
 
-export const CardProfile = ({ info }) => {
+type Props = {
+  info: Array<string>,
+};
+
+export const CardProfile = ({ info }: Props) => {
   const {
     height,
     weight,
@@ -59,10 +62,6 @@ kg
       </Container>
     </div>
   );
-};
-
-CardProfile.propTypes = {
-  info: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default CardProfile;

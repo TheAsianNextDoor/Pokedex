@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './CardBody.css';
 
-export const CardTitle = ({ info }) => {
+type Props = {
+  info: Array<string>,
+};
+
+export const CardTitle = ({ info }: Props) => {
   const { name, id, types = [] } = info;
   return (
     <div className="cardTitlePadding">
@@ -22,10 +25,6 @@ export const CardTitle = ({ info }) => {
       <hr className="cardTitleBreak" />
     </div>
   );
-};
-
-CardTitle.propTypes = {
-  info: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default CardTitle;

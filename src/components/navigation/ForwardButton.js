@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './navigation.css';
 
-export const ForwardButton = ({ handleNavChange, searchValue }) => {
+type Props = {
+  searchValue: string,
+  handleNavChange: Function,
+};
+
+export const ForwardButton = ({ searchValue, handleNavChange }: Props) => {
   // Checks if searchbar is active in order to attach function
   // to button
   if (searchValue === '') {
@@ -20,11 +24,6 @@ export const ForwardButton = ({ handleNavChange, searchValue }) => {
       className="fas fa-arrow-alt-circle-right fa-4x arrowDisabled"
     />
   );
-};
-
-ForwardButton.propTypes = {
-  handleNavChange: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
 };
 
 export default ForwardButton;

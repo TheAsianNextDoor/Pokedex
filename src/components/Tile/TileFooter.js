@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './tile.css';
 
-export const TileFooter = ({ type }) => (
+type Props = {
+  type: string,
+};
+
+export const TileFooter = ({ type }: Props) => (
   <div className="text-right pr-4 pt-2">
     { type.map(item => (
       <div className="d-inline px-1">
@@ -12,9 +15,5 @@ export const TileFooter = ({ type }) => (
         }
   </div>
 );
-
-TileFooter.propTypes = {
-  type: PropTypes.string.isRequired,
-};
 
 export default TileFooter;

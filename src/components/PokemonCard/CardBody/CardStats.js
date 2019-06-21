@@ -5,9 +5,12 @@ import {
   Col,
   Progress,
 } from 'reactstrap';
-import PropTypes from 'prop-types';
 
-export const CardStats = ({ info }) => {
+type Props = {
+  info: Array<string>,
+};
+
+export const CardStats = ({ info }: Props) => {
   const {
     hp,
     attack,
@@ -79,10 +82,6 @@ export const CardStats = ({ info }) => {
       </Row>
     </Container>
   );
-};
-
-CardStats.propTypes = {
-  info: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default CardStats;

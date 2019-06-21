@@ -1,6 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './navigation.css';
+
+type Props = {
+  page: string,
+  history: string,
+  handleNavChange: Function,
+  changeCardView: Function,
+  cardView: boolean,
+};
 
 export const BackwardButton = ({
   page,
@@ -8,7 +15,7 @@ export const BackwardButton = ({
   handleNavChange,
   changeCardView,
   cardView,
-}) => (
+}: Props) => (
   <i
     // Changes Cardview functionality and attempts to clean
     // searchbar input if is not CardView
@@ -23,13 +30,5 @@ export const BackwardButton = ({
     role="navigation"
   />
 );
-
-BackwardButton.propTypes = {
-  page: PropTypes.string.isRequired,
-  history: PropTypes.string.isRequired,
-  handleNavChange: PropTypes.func.isRequired,
-  changeCardView: PropTypes.func.isRequired,
-  cardView: PropTypes.bool.isRequired,
-};
 
 export default BackwardButton;
