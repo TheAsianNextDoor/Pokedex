@@ -2,16 +2,12 @@ import React from 'react';
 import './navigation.css';
 
 type Props = {
-  page: string,
-  history: string,
   handleNavChange: Function,
   changeCardView: Function,
   cardView: boolean,
 };
 
 export const BackwardButton = ({
-  page,
-  history,
   handleNavChange,
   changeCardView,
   cardView,
@@ -22,7 +18,8 @@ export const BackwardButton = ({
       handleNavChange('backward');
     } : () => {
       changeCardView();
-      history.push(`/Pokedex/Page/${page}`);
+      handleNavChange('cardView');
+      // history.push(`/Pokedex/Page/${page}`);
     }}
     className="fas fa-arrow-alt-circle-left fa-4x arrow"
     role="navigation"

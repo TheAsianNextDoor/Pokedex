@@ -36,15 +36,13 @@ export default class App extends Component<Props, State> {
       componentDidMount() {
         this.retrieveData('https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1');
 
-        // uncomment for when no internet
-
+        // // uncomment for when no internet
         // this.props.history.push('/Pokedex/Page/1');
-
-        // let data = require('./data/page1.json')
+        // const data = require('./data/page1.json');
         // this.setState({
         //   pokemonData: data,
-        //   page: data.meta.current_page
-        // })
+        //   page: data.meta.current_page,
+        // });
       }
 
       getName(pokemonName) {
@@ -65,66 +63,97 @@ export default class App extends Component<Props, State> {
       }
 
       handleSearchChange(search) {
-        this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${search}`);
+        const { page } = this.state;
+        const { history } = this.props;
+        if (search !== '') {
+          history.push(`/Pokedex/Pokemon/Name=${search}`);
+          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${search}`);
+        } else {
+          history.push(`/Pokedex/Pokemon/Page=${page}`);
+          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1`);
+        }
         this.setState({
           searchValue: search,
         });
       }
 
-      handleNavChangeWithSearch(nav) {
-        const { page, searchValue } = this.state;
-        const temp = page;
-        if (nav === 'forward') {
-          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${searchValue}&page=${temp + 1}`);
-          this.setState({
-            page: temp + 1,
-          });
+      navForward() {
+        const { page, searchValue, pokemonData } = this.state;
+        const { history } = this.props;
+        const updatedPage = page + 1;
+
+        // Conditional for when search bar is not empty
+        if (searchValue !== '') {
+        // update url
+          history.push(`/Pokedex/Pokemon/Name=${searchValue}/Page=${updatedPage}`);
+
+          // api call for new pokemon
+          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${searchValue}&page=${updatedPage}`);
+        } else {
+          history.push(`/Pokedex/Pokemon/Page=${updatedPage}`);
+          this.retrieveData(pokemonData.links.next);
         }
-        if (nav === 'backward') {
-          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${searchValue}&page=${temp - 1}`);
-          this.setState({
-            page: temp - 1,
-          });
+
+        // update page state
+        this.setState({
+          page: updatedPage,
+        });
+      }
+
+      navBackward() {
+        const { page, searchValue, pokemonData } = this.state;
+        const { history } = this.props;
+        const updatedPage = page - 1;
+
+        // Conditional for when search bar is not empty
+        if (searchValue !== '') {
+        // update url
+          history.push(`/Pokedex/Pokemon/Name=${searchValue}/Page=${updatedPage}`);
+
+          // api call for new pokemon
+          this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?name=${searchValue}&page=${updatedPage}`);
+        } else {
+          history.push(`/Pokedex/Pokemon/Page=${updatedPage}`);
+          this.retrieveData(pokemonData.links.prev);
         }
+
+        // update page state
+        this.setState({
+          page: updatedPage,
+        });
       }
 
       handleNavChange(ev) {
         const { page, searchValue, pokemonData } = this.state;
         const { history } = this.props;
 
+        // conditional for when forward button is pressed from tile view
         if (ev === 'forward' && page !== pokemonData.meta.last_page) {
-          if (searchValue === '') {
-            history.push(`/Pokedex/Pokemon?Page=${page + 1}`);
-            this.retrieveData(pokemonData.links.next);
-          } else {
-            history.push(`/Pokedex/Pokemon?Name=${searchValue}/Page=${page + 1}`);
-            this.handleNavChangeWithSearch(ev);
-          }
-          // uncomment for when no internet
+          this.navForward();
 
-          // let data = require('./data/page2.json')
+          // // uncomment for when no internet
+          // const data = require('./data/page2.json');
           // this.setState({
           //   pokemonData: data,
-          //   page: data.meta.current_page
-          // })
+          //   page: data.meta.current_page,
+          // });
         }
 
+        // conditional for when back button is pressed from tile view
         if (ev === 'backward' && page !== pokemonData.meta.from) {
-          if (searchValue === '') {
-            history.push(`/Pokedex/Pokemon?Page=${page - 1}`);
-            this.retrieveData(pokemonData.links.prev);
-          } else {
-            history.push(`/Pokedex/Pokemon?Name=${searchValue}/Page=${page - 1}`);
-            this.handleNavChangeWithSearch(ev);
-          }
+          this.navBackward();
 
-          // uncomment for when no internet
-
-          // let data = require('./data/page1.json')
+          // // uncomment for when no internet
+          // const data = require('./data/page1.json');
           // this.setState({
           //   pokemonData: data,
-          //   page: data.meta.current_page
-          // })
+          //   page: data.meta.current_page,
+          // });
+        }
+
+        // Conditional for when back button is pressed from card view page
+        if (ev === 'cardView' && searchValue !== '') {
+          history.push(`/Pokedex/Pokemon/Name=${searchValue}/Page=${page}`);
         }
       }
 
@@ -145,7 +174,7 @@ export default class App extends Component<Props, State> {
         return (
           <div className="container-fluid">
             <div className="inner-container">
-              {/* Backward button, search bar, forward button */}
+              {/* Backward button, Search Bar, Forward button */}
               <Header
                 handleNavChange={this.handleNavChange}
                 changeCardView={this.changeCardView}
@@ -156,7 +185,7 @@ export default class App extends Component<Props, State> {
                 handleSearchChange={this.handleSearchChange}
               />
 
-              {/* Pokemon */}
+              {/* Pokemon  Tiles */}
               <Body
                 pokemonData={pokemonData}
                 changeCardView={this.changeCardView}

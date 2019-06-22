@@ -51,7 +51,11 @@ export const Header = ({
     <div className="headerHeight">
       <Row>
         <Col xs={2} md={2}>
-          <BackwardButtonRouter page={page} changeCardView={changeCardView} cardView={cardView} />
+          <BackwardButtonRouter
+            changeCardView={changeCardView}
+            cardView={cardView}
+            handleNavChange={handleNavChange}
+          />
         </Col>
         <Col xs={8} md={8} className="px-0 mx-0 py-4">
           <span className="pokemonName">
