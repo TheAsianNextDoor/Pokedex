@@ -24,8 +24,8 @@ export default class Card extends Component<Props, State> {
       fetch(`https://intern-pokedex.myriadapps.com/api/v1/pokemon/${location.state.id}`, {
         method: 'GET',
       })
-        .then((response) => response.json())
-        .then((list) => this.setState(() => ({
+        .then(response => response.json())
+        .then(list => this.setState(() => ({
           info: list.data,
         })));
 

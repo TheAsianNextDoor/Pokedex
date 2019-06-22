@@ -36,10 +36,10 @@ export default class Body extends Component<Props, State> {
     componentWillReceiveProps(nextProps) {
       const list = nextProps.pokemonData.data;
       this.setState({
-        ids: list.map((item) => item.id),
-        names: list.map((item) => item.name),
-        imgs: list.map((item) => item.image),
-        types: list.map((item) => item.types),
+        ids: list.map(item => item.id),
+        names: list.map(item => item.name),
+        imgs: list.map(item => item.image),
+        types: list.map(item => item.types),
         size: list.length,
       });
     }
@@ -137,7 +137,7 @@ export default class Body extends Component<Props, State> {
         <Route
           path="/Pokedex/Pokemon/:name"
           // component={Card}
-          render={(props) => <Card {...props} getName={getName} />}
+          render={props => <Card {...props} getName={getName} />}
         />
       );
     }

@@ -14,9 +14,33 @@ module.exports = {
     ],
     "rules": {
         "react/jsx-filename-extension": 0,
-        "camelcase": "on",
+        "camelcase": 0,
+        "arrow-parens": [
+          "error",
+          "always"
+        ],
+        "linebreak-style": [
+          "error",
+          "windows"
+        ],
+        // "indent": [
+        //   "error",
+        //   4,
+        //   {
+        //     "SwitchCase": 1
+        //   }
+        // ],
+        "quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
     },
     "env":{
+      "node": true,
       "es6": true,
     }
 };

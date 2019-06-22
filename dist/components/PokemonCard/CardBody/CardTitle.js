@@ -15,7 +15,7 @@ export const CardTitle = ({ info }: Props) => {
         {id}
       </span>
       <span className="cardTitleAbilities">
-        { types.map((item) => (
+        { types.map(item => (
           <div className="d-inline px-1">
             <p className="titleType">{item}</p>
           </div>

@@ -36,7 +36,7 @@ export const Header = ({
             <SearchBar searchValue={searchValue} handleSearchChange={handleSearchChange} />
           </Col>
           <Col xs={2} md={2}>
-            <ForwardButton handleNavChange={handleNavChange} />
+            <ForwardButton searchValue={searchValue} handleNavChange={handleNavChange} />
           </Col>
         </Row>
       </div>
