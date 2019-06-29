@@ -24,7 +24,7 @@
     "flow": "flow",
     "flow status": "flow status",
     "updatePackages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save",
-    "fix-all": "eslint --fix *.js"
+    "eslint-fix-all": "eslint --fix ./src/"
   },
   "eslintConfig": {
     "extends": "react-app"

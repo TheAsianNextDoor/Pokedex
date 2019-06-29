@@ -41,7 +41,7 @@ export default class Card extends Component<Props, State> {
     render() {
       const { info } = this.state;
       return (
-        <Container className="cardContainer">
+        <Container className='cardContainer'>
           {/* Body */}
           <CardBody info={info} />
 

@@ -9,6 +9,7 @@
   border-radius: 10px;
   border-style: hidden;
   text-align: center;
+  user-select: none;
 }
 
 #searchBar:focus {

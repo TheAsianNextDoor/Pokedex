@@ -21,8 +21,8 @@ export const BackwardButton = ({
       handleNavChange('cardView');
       // history.push(`/Pokedex/Page/${page}`);
     }}
-    className="fas fa-arrow-alt-circle-left fa-4x arrow"
-    role="navigation"
+    className='fas fa-arrow-alt-circle-left fa-4x arrow'
+    role='navigation'
   />
 );
 

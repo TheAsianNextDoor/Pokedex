@@ -52,7 +52,7 @@ export default class Body extends Component<Props, State> {
     renderCard() {
       return (
         <Route
-          path="/Pokemon/:id"
+          path='/Pokemon/:id'
           component={this.Card}
         />
       );
@@ -91,7 +91,7 @@ export default class Body extends Component<Props, State> {
           j += 1) {
           rowOutput.push(
           // create reactstrap column and react router link
-            <Col key={ids[arrayIndex]} className="tilePadding" xs="6" sm="6" md="3" lg="3">
+            <Col key={ids[arrayIndex]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
               <Link
                 key={ids[arrayIndex]}
                 to={{
@@ -127,7 +127,7 @@ export default class Body extends Component<Props, State> {
 
       if (!cardView) {
         return (
-          <div className="bodySize">
+          <div className='bodySize'>
             {finalOutput}
           </div>
         );
@@ -135,7 +135,7 @@ export default class Body extends Component<Props, State> {
 
       return (
         <Route
-          path="/Pokedex/Pokemon/:name"
+          path='/Pokedex/Pokemon/:name'
           // component={Card}
           render={(props) => <Card {...props} getName={getName} />}
         />

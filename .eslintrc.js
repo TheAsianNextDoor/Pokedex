@@ -23,13 +23,10 @@ module.exports = {
           "error",
           "windows"
         ],
-        // "indent": [
-        //   "error",
-        //   4,
-        //   {
-        //     "SwitchCase": 1
-        //   }
-        // ],
+        'jsx-quotes': [ 
+          "error", 
+          "prefer-single"
+        ],
         "quotes": [
           "error",
           "single",

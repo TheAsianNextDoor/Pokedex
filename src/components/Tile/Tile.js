@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Tile = ({ name, img, type }: Props) => (
-  <div className="tile">
+  <div className='tile'>
     <TileHeader name={name} />
     <TileImage img={img} />
     <TileFooter type={type} />

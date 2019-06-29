@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const CardBody = ({ info }: Props) => (
-  <div className="cardStyle">
+  <div className='cardStyle'>
     {/* Navigation, Pokemon Name and Type */}
     <CardTitle info={info} />
 

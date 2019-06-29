@@ -3,6 +3,7 @@
   height: 245px;
   border-radius: 3px;
   text-align: center;
+
 }
 
 .tile-header-name {
@@ -13,6 +14,7 @@
   color: rgba(0, 0, 0, 0.85);
   font-size: 20px;
   text-align: left;
+  user-select: none;
 }
 
 .tile-img {
@@ -29,3 +31,4 @@
   border: 2px solid black;
   display: inline;
 }
+

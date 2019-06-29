@@ -12,7 +12,7 @@ import App from './App';
 ReactDOM.render(
   <Router>
     <div>
-      <Route path="/Pokedex" component={App} />
+      <Route path='/Pokedex' component={App} />
     </div>
     {/* <App />
     </> */}

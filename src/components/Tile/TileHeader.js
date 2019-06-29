@@ -7,8 +7,8 @@ type Props = {
 
 export const TileHeader = ({ name }: Props) => (
   <>
-    <h1 className="tile-header-name">{name}</h1>
-    <hr className="py-0 my-1" />
+    <h1 className='tile-header-name'>{name}</h1>
+    <hr className='py-0 my-1' />
   </>
 );
 

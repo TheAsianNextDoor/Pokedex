@@ -7,14 +7,17 @@ type Props = {
 }
 
 export const SearchBar = ({ searchValue, handleSearchChange }: Props) => (
-  <form onSubmit={(ev) => ev.preventDefault()} className="px-0 mx-0">
+  <form
+    onSubmit={(ev) => ev.preventDefault()}
+    className='px-0 mx-0 searchBar'
+  >
     <input
-      type="text"
-      id="searchBar"
-      placeholder="Pokedex"
+      type='text'
+      id='searchBar'
+      placeholder='Pokedex'
       defaultValue={searchValue || ''}
       onChange={(ev) => handleSearchChange(ev.target.value)}
-      autoComplete="off"
+      autoComplete='off'
     />
   </form>
 );
