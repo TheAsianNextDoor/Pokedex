@@ -6,11 +6,16 @@ type Props = {
 };
 
 export const ForwardButton = ({ handleNavChange }: Props) => (
-  <i
+  <button
     onClick={() => handleNavChange('forward')}
-    className='fas fa-arrow-alt-circle-right fa-4x arrow'
-    role='navigation'
-  />
+    className='arrow'
+    type='button'
+  >
+    <i
+      className='fas fa-arrow-alt-circle-right fa-4x inner-color'
+      role='navigation'
+    />
+  </button>
 );
 
 export default ForwardButton;

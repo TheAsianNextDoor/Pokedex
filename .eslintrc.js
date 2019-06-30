@@ -13,6 +13,7 @@ module.exports = {
       "react",
     ],
     "rules": {
+        "no-console": "off",
         "react/jsx-filename-extension": 0,
         "camelcase": 0,
         "arrow-parens": [
@@ -38,6 +39,8 @@ module.exports = {
     },
     "env":{
       "node": true,
+      "browser": true,
       "es6": true,
+      "mocha": true,
     }
 };

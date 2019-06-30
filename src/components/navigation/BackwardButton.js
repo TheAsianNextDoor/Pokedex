@@ -12,18 +12,22 @@ export const BackwardButton = ({
   changeCardView,
   cardView,
 }: Props) => (
-  <i
-    // Changes Cardview functionality
+  <button
+    // Changes functionality depending on if CardView
     onClick={!cardView ? () => {
       handleNavChange('backward');
     } : () => {
       changeCardView();
       handleNavChange('cardView');
-      // history.push(`/Pokedex/Page/${page}`);
     }}
-    className='fas fa-arrow-alt-circle-left fa-4x arrow'
-    role='navigation'
-  />
+    className='arrow'
+    type='button'
+  >
+    <i
+      className='fas fa-arrow-alt-circle-left fa-4x inner-color'
+      role='navigation'
+    />
+  </button>
 );
 
 export default BackwardButton;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Header } from './components/Header';
 import Body from './components/Body';
 import './App.css';
+
 
 type Props = {
   history: string,
@@ -39,27 +41,27 @@ export default class App extends Component<Props, State> {
         // // uncomment for when no internet
         // this.props.history.push('/Pokedex/Page/1');
         // const data = require('./data/page1.json');
-        // this.setState({
+        // this.setState(() => ({
         //   pokemonData: data,
         //   page: data.meta.current_page,
-        // });
+        // }));
       }
 
       getName(pokemonName) {
-        this.setState({
+        this.setState(() => ({
           name: pokemonName,
-        });
+        }));
       }
 
       retrieveData(url) {
-        fetch(url, {
-          method: 'GET',
-        })
-          .then((response) => response.json())
-          .then((list) => this.setState({
-            pokemonData: list,
-            page: list.meta.current_page,
-          }));
+        axios.get(url)
+          .then((response) => {
+            const list = response.data;
+            this.setState(() => ({
+              pokemonData: list,
+              page: list.meta.current_page,
+            }));
+          });
       }
 
       handleSearchChange(search) {
@@ -72,9 +74,9 @@ export default class App extends Component<Props, State> {
           history.push(`/Pokedex/Pokemon/Page=${page}`);
           this.retrieveData(`https://intern-pokedex.myriadapps.com/api/v1/pokemon?page=1`);
         }
-        this.setState({
+        this.setState(() => ({
           searchValue: search,
-        });
+        }));
       }
 
       navForward() {
@@ -95,9 +97,9 @@ export default class App extends Component<Props, State> {
         }
 
         // update page state
-        this.setState({
+        this.setState(() => ({
           page: updatedPage,
-        });
+        }));
       }
 
       navBackward() {
@@ -118,9 +120,9 @@ export default class App extends Component<Props, State> {
         }
 
         // update page state
-        this.setState({
+        this.setState(() => ({
           page: updatedPage,
-        });
+        }));
       }
 
       handleNavChange(ev) {
@@ -133,10 +135,10 @@ export default class App extends Component<Props, State> {
 
           // // uncomment for when no internet
           // const data = require('./data/page2.json');
-          // this.setState({
+          // this.setState(() => ({
           //   pokemonData: data,
           //   page: data.meta.current_page,
-          // });
+          // }));
         }
 
         // conditional for when back button is pressed from tile view
@@ -145,10 +147,10 @@ export default class App extends Component<Props, State> {
 
           // // uncomment for when no internet
           // const data = require('./data/page1.json');
-          // this.setState({
+          // this.setState(() => ({
           //   pokemonData: data,
           //   page: data.meta.current_page,
-          // });
+          // }));
         }
 
         // Conditional for when back button is pressed from card view page
