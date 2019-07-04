@@ -7,8 +7,8 @@ import './Body.css';
 
 type Props = {
   cardView: boolean,
-  pokemonData: Array<string>,
-  getName: Function,
+  pokemonData: Object,
+  setName: Function,
   changeCardView: Function,
 };
 
@@ -16,7 +16,7 @@ type State = {
   ids: Array<string>,
   names: Array<string>,
   imgs: Array<string>,
-  types: Array<string>,
+  types: Array<Object>,
   size: number,
 };
 
@@ -29,33 +29,20 @@ export default class Body extends Component<Props, State> {
       size: 0,
     };
 
-    renderCard = this.renderCard.bind(this);
-
-    updateCardView = this.updateCardView.bind(this);
-
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Object) {
       const list = nextProps.pokemonData.data;
-      this.setState({
-        ids: list.map(item => item.id),
-        names: list.map(item => item.name),
-        imgs: list.map(item => item.image),
-        types: list.map(item => item.types),
+      this.setState(() => ({
+        ids: list.map((item) => item.id),
+        names: list.map((item) => item.name),
+        imgs: list.map((item) => item.image),
+        types: list.map((item) => item.types),
         size: list.length,
-      });
+      }));
     }
 
-    updateCardView() {
+    updateCardView = () => {
       const { changeCardView } = this.props;
       changeCardView();
-    }
-
-    renderCard() {
-      return (
-        <Route
-          path="/Pokemon/:id"
-          component={this.Card}
-        />
-      );
     }
 
     render() {
@@ -68,7 +55,7 @@ export default class Body extends Component<Props, State> {
       } = this.state;
 
       const {
-        getName,
+        setName,
         cardView,
       } = this.props;
 
@@ -91,7 +78,7 @@ export default class Body extends Component<Props, State> {
           j += 1) {
           rowOutput.push(
           // create reactstrap column and react router link
-            <Col key={ids[arrayIndex]} className="tilePadding" xs="6" sm="6" md="3" lg="3">
+            <Col key={ids[arrayIndex]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
               <Link
                 key={ids[arrayIndex]}
                 to={{
@@ -106,7 +93,7 @@ export default class Body extends Component<Props, State> {
                   key={ids[arrayIndex]}
                   name={names[arrayIndex]}
                   img={imgs[arrayIndex]}
-                  type={types[arrayIndex]}
+                  types={types[arrayIndex]}
                 />
               </Link>
             </Col>,
@@ -127,7 +114,7 @@ export default class Body extends Component<Props, State> {
 
       if (!cardView) {
         return (
-          <div className="bodySize">
+          <div className='bodySize'>
             {finalOutput}
           </div>
         );
@@ -135,9 +122,9 @@ export default class Body extends Component<Props, State> {
 
       return (
         <Route
-          path="/Pokedex/Pokemon/:name"
+          path='/Pokedex/Pokemon/:name'
           // component={Card}
-          render={props => <Card {...props} getName={getName} />}
+          render={(props) => <Card {...props} setName={setName} />}
         />
       );
     }

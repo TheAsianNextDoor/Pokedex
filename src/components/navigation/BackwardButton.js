@@ -7,6 +7,13 @@ type Props = {
   cardView: boolean,
 };
 
+/**
+ * The functional component for the back button
+ *
+ * @param {Function} handleNavChange Function used to determine type of navigation
+ * @param {Function} changeCardView Function used to change whether or card or tiles are displayed
+ * @param {Boolean} cardView Boolean that represents card view state
+ */
 export const BackwardButton = ({
   handleNavChange,
   changeCardView,

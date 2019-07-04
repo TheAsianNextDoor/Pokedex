@@ -1,6 +1,10 @@
 
-
-export default function colorSetter(text) {
+/**
+ * Function that sets CSS for specified pokemon type
+ *
+ * @param {string} text String that contains Pokemon type
+ */
+export default function colorSetter(text: string) {
   switch (text) {
     case 'Normal':
       return { background: '#A8A77A', color: 'white' };

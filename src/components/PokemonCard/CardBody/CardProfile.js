@@ -2,9 +2,14 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 type Props = {
-  info: Array<string>,
+  info: Object,
 };
 
+/**
+ * The functional component for the card profile
+ *
+ * @param {Object} info The object containing the pokemon card data
+ */
 export const CardProfile = ({ info }: Props) => {
   const {
     height,

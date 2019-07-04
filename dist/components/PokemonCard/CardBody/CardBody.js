@@ -5,11 +5,16 @@ import { CardTitle } from './CardTitle';
 import './CardBody.css';
 
 type Props = {
-  info: Array<string>,
+  info: Object,
 };
 
+/**
+ * The functional component for the card body
+ *
+ * @param {Object} info The object containing the card data
+ */
 export const CardBody = ({ info }: Props) => (
-  <div className="cardStyle">
+  <div className='cardStyle'>
     {/* Navigation, Pokemon Name and Type */}
     <CardTitle info={info} />
 

@@ -6,6 +6,12 @@ type Props = {
   handleSearchChange: Function,
 }
 
+/**
+ * The functional component for the search bar
+ *
+ * @param {string} searchValue String of the search bar
+ * @param {Function} handleSearchChange Function used to raise search value up to parent
+ */
 export const SearchBar = ({ searchValue, handleSearchChange }: Props) => (
   <form
     onSubmit={(ev) => ev.preventDefault()}

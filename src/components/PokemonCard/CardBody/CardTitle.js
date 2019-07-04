@@ -1,13 +1,19 @@
+// @flow
 import React from 'react';
 import { capitalizeFirstLetter } from '../../../Utils/stringUtils';
 import colorSetter from '../../../Utils/colorUtils';
 import './CardBody.css';
 
-type Props = {
-  info: Array<string>,
+type props = {
+  info: Object,
 };
 
-export const CardTitle = ({ info }: Props) => {
+/**
+ * The functional component for the card title
+ *
+ * @param {Object} info The object containing the pokemon card data
+ */
+export const CardTitle = ({ info }: props) => {
   const { name, id, types = [] } = info;
   return (
     <div className='cardTitlePadding'>

@@ -1,29 +1,34 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import './navigation.css';
 
 type Props = {
-  searchValue: string,
   handleNavChange: Function,
 };
 
-export const ForwardButton = ({ searchValue, handleNavChange }: Props) => {
-  // Checks if searchbar is active in order to attach function
-  // to button
-  if (searchValue === '') {
-    return (
+/**
+ * The functional component for the forward button
+ *
+ * @param {String} handelNavChange Function used to determine type of navigation
+ */
+export const ForwardButton = ({ handleNavChange }: Props) => (
+  <CSSTransition
+    in
+    appear
+    timeout={2000}
+    classNames='my-node-entering'
+  >
+    <button
+      onClick={() => handleNavChange('forward')}
+      className='arrow'
+      type='button'
+    >
       <i
-        onClick={() => handleNavChange('forward')}
-        className="fas fa-arrow-alt-circle-right fa-4x arrow"
-        role="navigation"
+        className='fas fa-arrow-alt-circle-right fa-4x inner-color'
+        role='navigation'
       />
-    );
-  }
-  // grey out nav buttons when searchbar is active
-  return (
-    <i
-      className="fas fa-arrow-alt-circle-right fa-4x arrowDisabled"
-    />
-  );
-};
+    </button>
+  </CSSTransition>
+);
 
 export default ForwardButton;

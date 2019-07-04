@@ -9,17 +9,26 @@ import './Header.css';
 type Props = {
   searchValue: string,
   name: string,
-  page: string,
   handleSearchChange: Function,
   handleNavChange: Function,
   changeCardView: Function,
   cardView: boolean,
 };
 
+/**
+ * Functional component that holds logic for navigation
+ *
+ * @param {string} searchValue String of the search bar
+ * @param {string} name String of pokemon name
+ * @param {Function} handleNavChange Function used to determine type of navigation
+ * @param {Function} handleSearchChange Function used to raise search value up to parent
+ * @param {Function} changeCardView Function that changes tile and card visibility
+ * @param {boolean} cardView Boolean that keeps track of tile and card visibility
+
+ */
 export const Header = ({
   searchValue,
   name,
-  page,
   handleSearchChange,
   handleNavChange,
   changeCardView,
@@ -30,7 +39,11 @@ export const Header = ({
       <div className='headerHeight'>
         <Row>
           <Col xs={2} md={2}>
-            <BackwardButton page={page} handleNavChange={handleNavChange} />
+            <BackwardButton
+              changeCardView={changeCardView}
+              cardView={cardView}
+              handleNavChange={handleNavChange}
+            />
           </Col>
           <Col xs={8} md={8} className='px-0 mx-0 py-4'>
             <SearchBar searchValue={searchValue} handleSearchChange={handleSearchChange} />

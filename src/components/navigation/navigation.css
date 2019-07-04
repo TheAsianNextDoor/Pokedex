@@ -20,6 +20,21 @@ button:focus {
   outline: none;
 }
 
+.my-node-entered {
+  opacity: 0;
+}
+.my-node-entering {
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+.my-node-exited {
+  opacity: 1;
+}
+.my-node-exiting {
+  opacity: 0;
+  transition: opacity 2000ms;
+}
+
 .arrow {
   transform: translateY(50%);
   background-color: rgba(85, 166, 156, 1);

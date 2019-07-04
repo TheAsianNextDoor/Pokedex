@@ -2,33 +2,39 @@ import React from 'react';
 import './navigation.css';
 
 type Props = {
-  page: string,
-  history: string,
   handleNavChange: Function,
   changeCardView: Function,
   cardView: boolean,
 };
 
+/**
+ * The functional component for the back button
+ *
+ * @param {Function} handelNavChange Function used to determine type of navigation
+ * @param {Function} changeCardView Function used to change whether or card or tiles are displayed
+ * @param {Boolean} cardView Boolean that represents card view state
+ */
 export const BackwardButton = ({
-  page,
-  history,
   handleNavChange,
   changeCardView,
   cardView,
 }: Props) => (
-  <i
-    // Changes Cardview functionality and attempts to clean
-    // searchbar input if is not CardView
+  <button
+    // Changes functionality depending on if CardView
     onClick={!cardView ? () => {
       handleNavChange('backward');
-      document.getElementById('searchBar').value = '';
     } : () => {
       changeCardView();
-      history.push(`/Pokedex/Page/${page}`);
+      handleNavChange('cardView');
     }}
-    className="fas fa-arrow-alt-circle-left fa-4x arrow"
-    role="navigation"
-  />
+    className='arrow'
+    type='button'
+  >
+    <i
+      className='fas fa-arrow-alt-circle-left fa-4x inner-color'
+      role='navigation'
+    />
+  </button>
 );
 
 export default BackwardButton;

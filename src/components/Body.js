@@ -7,8 +7,8 @@ import './Body.css';
 
 type Props = {
   cardView: boolean,
-  pokemonData: Array<string>,
-  getName: Function,
+  pokemonData: Object,
+  setName: Function,
   changeCardView: Function,
 };
 
@@ -16,10 +16,18 @@ type State = {
   ids: Array<string>,
   names: Array<string>,
   imgs: Array<string>,
-  types: Array<string>,
+  types: Array<Object>,
   size: number,
 };
 
+/**
+ * Class component that holds either cards or tiles depending on user interaction
+ *
+ * @param {boolean} cardView Boolean that keeps track of tile and card visibility
+ * @param {Object} pokemonData Object containing pokemon data
+ * @param {Function} setName Function that sets the pokemon name in header
+ * @param {Function} changeCardView Function that changes tile and card visibility
+ */
 export default class Body extends Component<Props, State> {
     state = {
       ids: [],
@@ -29,11 +37,7 @@ export default class Body extends Component<Props, State> {
       size: 0,
     };
 
-    renderCard = this.renderCard.bind(this);
-
-    updateCardView = this.updateCardView.bind(this);
-
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Object) {
       const list = nextProps.pokemonData.data;
       this.setState(() => ({
         ids: list.map((item) => item.id),
@@ -44,18 +48,9 @@ export default class Body extends Component<Props, State> {
       }));
     }
 
-    updateCardView() {
+    updateCardView = () => {
       const { changeCardView } = this.props;
       changeCardView();
-    }
-
-    renderCard() {
-      return (
-        <Route
-          path='/Pokemon/:id'
-          component={this.Card}
-        />
-      );
     }
 
     render() {
@@ -68,7 +63,7 @@ export default class Body extends Component<Props, State> {
       } = this.state;
 
       const {
-        getName,
+        setName,
         cardView,
       } = this.props;
 
@@ -106,7 +101,7 @@ export default class Body extends Component<Props, State> {
                   key={ids[arrayIndex]}
                   name={names[arrayIndex]}
                   img={imgs[arrayIndex]}
-                  type={types[arrayIndex]}
+                  types={types[arrayIndex]}
                 />
               </Link>
             </Col>,
@@ -137,7 +132,7 @@ export default class Body extends Component<Props, State> {
         <Route
           path='/Pokedex/Pokemon/:name'
           // component={Card}
-          render={(props) => <Card {...props} getName={getName} />}
+          render={(props) => <Card {...props} setName={setName} />}
         />
       );
     }

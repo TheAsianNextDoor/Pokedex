@@ -6,8 +6,8 @@ type Props = {
 };
 
 export const TileImage = ({ img }: Props) => (
-  <div className="text-center pt-4">
-    <img src={img} className="tile-img" alt="" />
+  <div className='text-center pt-4'>
+    <img src={img} className='tile-img' alt='' />
   </div>
 );
 

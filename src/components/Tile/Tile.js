@@ -7,14 +7,21 @@ import './tile.css';
 type Props = {
   name: string,
   img: string,
-  type: string,
+  types: Array<Object>,
 };
 
-export const Tile = ({ name, img, type }: Props) => (
+/**
+ * Functional component that represents the tiles
+ *
+ * @param {string} name Pokemon name
+ * @param {string} img  Pokemon image
+ * @param {Array<Object>} types Pokemon types
+ */
+export const Tile = ({ name, img, types }: Props) => (
   <div className='tile'>
     <TileHeader name={name} />
     <TileImage img={img} />
-    <TileFooter type={type} />
+    <TileFooter types={types} />
   </div>
 );
 

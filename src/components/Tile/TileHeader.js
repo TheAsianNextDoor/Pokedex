@@ -5,6 +5,11 @@ type Props = {
   name: string,
 };
 
+/**
+ * Functional component for tile header
+ *
+ * @param {string} name Pokemon name
+ */
 export const TileHeader = ({ name }: Props) => (
   <>
     <h1 className='tile-header-name'>{name}</h1>

@@ -7,14 +7,14 @@ import './tile.css';
 type Props = {
   name: string,
   img: string,
-  type: string,
+  types: Array<Object>,
 };
 
-export const Tile = ({ name, img, type }: Props) => (
-  <div className="tile">
+export const Tile = ({ name, img, types }: Props) => (
+  <div className='tile'>
     <TileHeader name={name} />
     <TileImage img={img} />
-    <TileFooter type={type} />
+    <TileFooter types={types} />
   </div>
 );
 
