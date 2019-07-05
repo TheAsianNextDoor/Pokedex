@@ -26,21 +26,40 @@ export default class Card extends Component<Props, State> {
     };
 
     componentDidMount() {
-      // eslint-disable-next-line react/prop-types
       const { location, match, setName } = this.props;
-      axios.get(`https://intern-pokedex.myriadapps.com/api/v1/pokemon/${location.state.id}`)
-        .then((response) => {
-          const list = response.data;
-          this.setState(() => ({
-            info: list.data,
-          }));
-        });
+      const apiCall = `https://intern-pokedex.myriadapps.com/api/v1/pokemon/${location.state.id}`;
 
-      // let data = require('../../data/bulbasaur.json')
-      // this.setState(() => {
-      //   return{
-      //     info: data.data,
-      // }})
+      // attempts to get url from local storage
+      const cacheResponse = localStorage.getItem(apiCall);
+
+      // if api response hasn't been cached yet, make axios call
+      if (cacheResponse === null) {
+        axios.get(apiCall)
+          .then((response) => {
+            const list = response.data;
+            // set api call to state
+            this.setState(() => ({
+              info: list.data,
+            }));
+
+            // save api call to local storage
+            localStorage.setItem(apiCall, JSON.stringify(list));
+          });
+      } else {
+      // retrieve cached response from local storage and convert to json
+        const retrievedObject = JSON.parse(localStorage.getItem(apiCall));
+
+        // set state from local storage
+        this.setState(() => ({
+          info: retrievedObject.data,
+        }));
+      }
+
+      // // uncomment for when offline
+      // const data = require('../../data/bulbasaur.json');
+      // this.setState(() => ({
+      //   info: data.data,
+      // }));
 
       setName(match.params.name);
     }

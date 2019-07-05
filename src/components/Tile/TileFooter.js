@@ -16,7 +16,10 @@ export const TileFooter = ({ types }: Props) => (
   <div className='text-right pr-4 pt-2'>
     {
       types.map((item) => (
-        <div className='d-inline px-1'>
+        <div
+          className='d-inline px-1'
+          key={item}
+        >
           <p
             className='tile-footer'
             style={colorSetter(capitalizeFirstLetter(item))}

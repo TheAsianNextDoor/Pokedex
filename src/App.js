@@ -4,7 +4,6 @@ import { Header } from './components/Header';
 import Body from './components/Body';
 import './App.css';
 
-
 type Props = {
   history: any,
 };
@@ -43,25 +42,55 @@ export default class App extends Component<Props, State> {
     // }));
   }
 
+  /**
+   * Function that updates the state for pokemon name
+   *
+   * @param {string} pokemonName A string representing the pokemon name
+   */
   setName = (pokemonName: string) => {
     this.setState(() => ({
       name: pokemonName,
     }));
   }
 
-  retrieveData = (url: string) => {
-    axios.get(url)
-      .then((response) => {
-        const list = response.data;
-        this.setState(() => ({
-          pokemonData: list,
-          page: list.meta.current_page,
-        }));
-      });
+  /**
+   * Function that makes api calls or retrieves object from local storage
+   *
+   * @param {string} apiCall The string used to make an axios GET request
+   */
+  retrieveData = (apiCall: ?string) => {
+    // attempts to get url from local storage
+    const cacheResponse = localStorage.getItem(apiCall);
+
+    // if api response hasn't been cached yet, make axios call
+    if (cacheResponse === null) {
+      axios.get(apiCall)
+        .then((response) => {
+          const list = response.data;
+          // set api call to state
+          this.setState(() => ({
+            pokemonData: list,
+            page: list.meta.current_page,
+          }));
+
+          // save api call to local storage
+          localStorage.setItem(apiCall, JSON.stringify(list));
+        });
+    } else {
+      // retrieve cached response from local storage and convert to json
+      const retrievedObject = JSON.parse(localStorage.getItem(apiCall));
+
+      // set state from local storage
+      this.setState(() => ({
+        pokemonData: retrievedObject,
+        page: retrievedObject.meta.current_page,
+      }));
+    }
   }
 
   /**
-   * Handles logic associated with search bar inputs
+   * Function that handles logic associated with search bar inputs
+   *
    * @param {String} search The text in the the search bar
    */
   handleSearchChange = (search: string) => {
@@ -79,6 +108,10 @@ export default class App extends Component<Props, State> {
     }));
   }
 
+  /**
+   * Function that handles nav forward logic with input or no input
+   * Also updates url with new page info
+   */
   navForward = () => {
     const { page, searchValue, pokemonData } = this.state;
     const { history } = this.props;
@@ -102,6 +135,10 @@ export default class App extends Component<Props, State> {
     }));
   }
 
+  /**
+   * Function that handles nav backward logic with input or no input
+   * Also updates url with new page info
+   */
   navBackward = () => {
     const { page, searchValue, pokemonData } = this.state;
     const { history } = this.props;
@@ -125,6 +162,10 @@ export default class App extends Component<Props, State> {
     }));
   }
 
+  /**
+   * Function that determines when navForward and navBackward functions are called,
+   * as well as, how to update url when card view is changed
+   */
   handleNavChange = (ev: string) => {
     const { page, searchValue, pokemonData } = this.state;
     const { history } = this.props;
@@ -163,6 +204,9 @@ export default class App extends Component<Props, State> {
     }
   }
 
+  /**
+   * Function that changes visibility of cards and tiles
+   */
   changeCardView = () => {
     this.setState((prevState) => ({
       cardView: !prevState.cardView,
@@ -174,7 +218,6 @@ export default class App extends Component<Props, State> {
       searchValue,
       cardView,
       pokemonData,
-      page,
       name,
     } = this.state;
     return (

@@ -24,7 +24,10 @@ export const CardTitle = ({ info }: props) => {
       </span>
       <span className='cardTitleAbilities'>
         { types.map((item) => (
-          <div className='d-inline px-1'>
+          <div
+            className='d-inline px-1'
+            key={item}
+          >
             <p
               className='titleType'
               style={colorSetter(capitalizeFirstLetter(item))}

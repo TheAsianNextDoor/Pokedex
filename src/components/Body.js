@@ -48,6 +48,9 @@ export default class Body extends Component<Props, State> {
       }));
     }
 
+    /**
+     * Function that changes the card and tile visibility on tile click
+     */
     updateCardView = () => {
       const { changeCardView } = this.props;
       changeCardView();
