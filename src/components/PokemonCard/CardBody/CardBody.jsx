@@ -5,7 +5,7 @@ import { CardTitle } from './CardTitle';
 import './CardBody.css';
 
 type Props = {
-  info: Object,
+    info: Object,
 };
 
 /**
@@ -14,16 +14,16 @@ type Props = {
  * @param {Object} info The object containing the pokemon card data
  */
 export const CardBody = ({ info }: Props) => (
-  <div className='cardStyle'>
-    {/* Navigation, Pokemon Name and Type */}
-    <CardTitle info={info} />
+    <div className='cardStyle'>
+        {/* Navigation, Pokemon Name and Type */}
+        <CardTitle info={info} />
 
-    {/* Pokemon image, stats, description */}
-    <CardStats info={info} />
+        {/* Pokemon image, stats, description */}
+        <CardStats info={info} />
 
-    {/* Pokemon info */}
-    <CardProfile info={info} />
-  </div>
+        {/* Pokemon info */}
+        <CardProfile info={info} />
+    </div>
 );
 
 export default CardBody;

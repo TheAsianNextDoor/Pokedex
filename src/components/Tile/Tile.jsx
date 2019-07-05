@@ -5,9 +5,9 @@ import { TileFooter } from './TileFooter';
 import './tile.css';
 
 type Props = {
-  name: string,
-  img: string,
-  types: Array<Object>,
+    name: string,
+    img: string,
+    types: Array<Object>,
 };
 
 /**
@@ -18,11 +18,11 @@ type Props = {
  * @param {Array<Object>} types Pokemon types
  */
 export const Tile = ({ name, img, types }: Props) => (
-  <div className='tile'>
-    <TileHeader name={name} />
-    <TileImage img={img} />
-    <TileFooter types={types} />
-  </div>
+    <div className='tile'>
+        <TileHeader name={name} />
+        <TileImage img={img} />
+        <TileFooter types={types} />
+    </div>
 );
 
 export default Tile;

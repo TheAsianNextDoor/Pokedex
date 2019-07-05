@@ -5,16 +5,18 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import App from './App';
+import App from './App.jsx';
 
 
 ReactDOM.render(
-  <Router>
-    <div>
-      <Route component={App} />
-    </div>
-  </Router>,
-  document.getElementById('root'),
+    <Router>
+        <div>
+            <Route
+                component={App}
+            />
+        </div>
+    </Router>,
+    document.getElementById('root'),
 );
 
 

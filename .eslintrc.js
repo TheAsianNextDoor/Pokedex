@@ -1,18 +1,40 @@
 module.exports = {
+    "extends": [
+        "airbnb",
+        "react-app",
+    ],
     "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
       "ecmaFeatures": {
             "jsx": true,
             "modules": true,
             "experimentalObjectRestSpread": true
-        }
+        },
     },
-    "extends": "airbnb", 
     "plugins": [
       "react",
+      "flow",
+      "flowtype",
+      "import",
+      "jsx-a11y",
     ],
+    "env":{
+      "node": true,
+      "browser": true,
+      "es6": true,
+      "mocha": true,
+    },
     "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "indent": [
+          "error",
+          4,
+        ],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
         "no-console": "off",
         "react/jsx-filename-extension": 0,
         "camelcase": 0,
@@ -37,10 +59,4 @@ module.exports = {
           }
         ],
     },
-    "env":{
-      "node": true,
-      "browser": true,
-      "es6": true,
-      "mocha": true,
-    }
 };
