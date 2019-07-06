@@ -18,7 +18,7 @@ type Props = {
  * @param {Array<Object>} types Pokemon types
  */
 export const Tile = ({ name, img, types }: Props) => (
-    <div className='tile'>
+    <div id='tileDiv' className='tile'>
         <TileHeader name={name} />
         <TileImage img={img} />
         <TileFooter types={types} />

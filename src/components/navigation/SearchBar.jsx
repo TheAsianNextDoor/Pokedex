@@ -14,6 +14,7 @@ type Props = {
  */
 export const SearchBar = ({ searchValue, handleSearchChange }: Props) => (
     <form
+        id='searchBarFormForm'
         onSubmit={(ev) => ev.preventDefault()}
         className='px-0 mx-0 searchBar'
     >

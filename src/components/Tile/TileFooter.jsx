@@ -13,14 +13,16 @@ type Props = {
  * @param {Array<Object>} types Pokemon types
  */
 export const TileFooter = ({ types }: Props) => (
-    <div className='text-right pr-4 pt-2'>
+    <div id='tileFooterDiv' className='text-right pr-4 pt-2'>
         {
             types.map((item) => (
                 <div
+                    id='tileFooterItemDiv'
                     className='d-inline px-1'
                     key={item}
                 >
                     <p
+                        id='tileFooterItemP'
                         className='tile-footer'
                         style={colorSetter(capitalizeFirstLetter(item))}
                     >

@@ -19,11 +19,13 @@ export const ForwardButton = ({ handleNavChange }: Props) => (
         classNames='my-node-entering'
     >
         <button
+            id='forwardButtonButton'
             onClick={() => handleNavChange('forward')}
             className='arrow'
             type='button'
         >
             <i
+                id='forwardButtonI'
                 className='fas fa-arrow-alt-circle-right fa-4x inner-color'
                 role='navigation'
             />

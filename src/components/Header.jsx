@@ -36,7 +36,7 @@ export const Header = ({
 }: Props) => {
     if (!cardView) {
         return (
-            <div className='headerHeight'>
+            <div id='headerDiv' className='headerHeight'>
                 <Row>
                     <Col xs={2} md={2}>
                         <BackwardButton
@@ -71,7 +71,7 @@ export const Header = ({
                     />
                 </Col>
                 <Col xs={8} md={8} className='px-0 mx-0 py-4'>
-                    <span className='pokemonName'>
+                    <span id='headerSpanName' className='pokemonName'>
                         {name}
                     </span>
                 </Col>

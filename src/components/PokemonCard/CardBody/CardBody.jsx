@@ -14,7 +14,7 @@ type Props = {
  * @param {Object} info The object containing the pokemon card data
  */
 export const CardBody = ({ info }: Props) => (
-    <div className='cardStyle'>
+    <div id='cardBodyDiv' className='cardStyle'>
         {/* Navigation, Pokemon Name and Type */}
         <CardTitle info={info} />
 

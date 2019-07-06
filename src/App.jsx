@@ -221,8 +221,8 @@ export default class App extends Component<Props, State> {
             name,
         } = this.state;
         return (
-            <div className='container-fluid'>
-                <div className='inner-container'>
+            <div id='appTopDiv' className='container-fluid'>
+                <div id='appSecondDiv' className='inner-container'>
                     {/* Backward button, Search Bar, Forward button */}
                     <Header
                         handleNavChange={this.handleNavChange}

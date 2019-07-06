@@ -20,17 +20,19 @@ export const BackwardButton = ({
     cardView,
 }: Props) => (
     <button
-    // Changes functionality depending on if CardView
+        id='backwardButtonButton'
+        className='arrow'
+        type='button'
+        // Changes functionality depending on if CardView
         onClick={!cardView ? () => {
             handleNavChange('backward');
         } : () => {
             changeCardView();
             handleNavChange('cardView');
         }}
-        className='arrow'
-        type='button'
     >
         <i
+            id='backwardButtonI'
             className='fas fa-arrow-alt-circle-left fa-4x inner-color'
             role='navigation'
         />

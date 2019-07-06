@@ -91,6 +91,7 @@ export default class Body extends Component<Props, State> {
                     // create reactstrap column and react router link
                     <Col key={ids[arrayIndex]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
                         <Link
+                            id={`link${names[arrayIndex]}`}
                             key={ids[arrayIndex]}
                             to={{
                                 pathname: `/Pokedex/Pokemon/${names[arrayIndex]}`,
@@ -101,6 +102,7 @@ export default class Body extends Component<Props, State> {
                             onClick={this.updateCardView}
                         >
                             <Tile
+                                id={`tile${names[arrayIndex]}`}
                                 key={ids[arrayIndex]}
                                 name={names[arrayIndex]}
                                 img={imgs[arrayIndex]}
@@ -125,7 +127,7 @@ export default class Body extends Component<Props, State> {
 
         if (!cardView) {
             return (
-                <div className='bodySize'>
+                <div id='bodyDiv' className='bodySize'>
                     {finalOutput}
                 </div>
             );

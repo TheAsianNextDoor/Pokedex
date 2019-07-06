@@ -87,37 +87,64 @@ export const CardStats = ({ info }: Props) => {
                                 color='success'
                                 value={defensePercent}
                             >
-                                <span id='cardStatsSpanDefText' className='align-left pl-2'>{defense}</span>
+                                <span id='cardStatsSpanDefText' className='align-left pl-2'>
+                                    {defense}
+                                </span>
                             </Progress>
                         </div>
 
-                        <div id='cardStatsDiv' className='statPadding'>
-                            <Progress id='cardStatsProgress' color='success' value={speedPercent}>
-                                <span id='cardStatsSpan' className='align-left pl-2'>{speed}</span>
+                        <div id='cardStatsDivSpeed' className='statPadding'>
+                            <Progress
+                                id='cardStatsProgressSpeed'
+                                color='success'
+                                value={speedPercent}
+                            >
+                                <span id='cardStatsSpanSpeedText' className='align-left pl-2'>
+                                    {speed}
+                                </span>
                             </Progress>
                         </div>
 
-                        <div id='cardStatsDiv' className='statPadding'>
-                            <Progress id='cardStatsProgress' color='success' value={spAtkPercent}>
-                                <span id='cardStatsSpan' className='align-left pl-2'>{spAtk}</span>
+                        <div id='cardStatsDivSpAtk' className='statPadding'>
+                            <Progress
+                                id='cardStatsProgressSpAtk'
+                                color='success'
+                                value={spAtkPercent}
+                            >
+                                <span id='cardStatsSpanSpAtkText' className='align-left pl-2'>
+                                    {spAtk}
+                                </span>
                             </Progress>
                         </div>
 
-                        <div id='cardStatsDiv' className='statPadding'>
-                            <Progress id='cardStatsProgress' color='success' value={spDefPercent}>
-                                <span id='cardStatsSpan' className='align-left pl-2'>{spDef}</span>
+                        <div id='cardStatsDivSpDef' className='statPadding'>
+                            <Progress
+                                id='cardStatsProgressSpDef'
+                                color='success'
+                                value={spDefPercent}
+                            >
+                                <span id='cardStatsSpanSpDefText' className='align-left pl-2'>
+                                    {spDef}
+                                </span>
                             </Progress>
                         </div>
 
                     </Col>
                 </Col>
             </Row>
-            <h2 className='genusTitle align-left'>{info.genus}</h2>
+
+            <h2 id='cardStatsGenusTitle' className='genusTitle align-left'>
+                {info.genus}
+            </h2>
+
             <Row className='pt-2'>
                 <Col lg={12}>
-                    <h2 className='description align-left'>{info.description}</h2>
+                    <p id='cardStatsDescription' className='description align-left'>
+                        {info.description}
+                    </p>
                 </Col>
             </Row>
+
         </Container>
     );
 };
