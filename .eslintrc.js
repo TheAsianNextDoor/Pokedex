@@ -28,7 +28,6 @@ module.exports = {
       "mocha": true,
     },
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "indent": [
           "error",
           4,

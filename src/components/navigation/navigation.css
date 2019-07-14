@@ -20,35 +20,39 @@ button:focus {
   outline: none;
 }
 
-.my-node-entered {
-  opacity: 0;
+.alert-enter {
+  opacity: 0
 }
-.my-node-entering {
+.alert-enter-active {
   opacity: 1;
-  transition: opacity 2000ms;
-}
-.my-node-exited {
-  opacity: 1;
-}
-.my-node-exiting {
-  opacity: 0;
-  transition: opacity 2000ms;
+  transition: opacity 2s ease-in;
 }
 
-.arrow {
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+
+.arrow-button{
   transform: translateY(50%);
-  background-color: rgba(85, 166, 156, 1);
-  border: none;
-  border-width: 0;
+  height: 68px;
+  width: 68px;
   border-radius: 50%;
-  text-align: center;
+  background-color: white;
+  border-width: 0;
 }
 
-.inner-color {
-  color: white;
-  display: inline-block;
+.arrow-icon-right{
+  transform: translate(5%, -39%);
+  font-size: 110px;
+  color: rgba(85, 166, 156, 1);
 }
 
-.inner-color:hover {
-  color: rgba(0, 0, 0, .6);
+.arrow-icon-left{
+  transform: translate(0%, -39%);
+  font-size: 110px;
+  color: rgba(85, 166, 156, 1);
 }

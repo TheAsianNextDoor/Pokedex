@@ -12,8 +12,9 @@ type State = {
     pokemonData: any,
     page: number,
     name: string,
+    searchValue: string,
     cardView: boolean,
-    searchValue: string
+    navChanging: boolean,
 };
 
 /**
@@ -23,11 +24,12 @@ type State = {
  */
 export default class App extends Component<Props, State> {
     state = {
-        pokemonData: {},
+        pokemonData: { data: {} },
         page: 1,
         name: '',
-        cardView: false,
         searchValue: '',
+        cardView: false,
+        navChanging: false,
     };
 
     componentDidMount() {
@@ -113,7 +115,11 @@ export default class App extends Component<Props, State> {
    * Also updates url with new page info
    */
     navForward = () => {
-        const { page, searchValue, pokemonData } = this.state;
+        const {
+            page,
+            searchValue,
+            pokemonData,
+        } = this.state;
         const { history } = this.props;
         const updatedPage = page + 1;
 
@@ -140,7 +146,11 @@ export default class App extends Component<Props, State> {
    * Also updates url with new page info
    */
     navBackward = () => {
-        const { page, searchValue, pokemonData } = this.state;
+        const {
+            page,
+            searchValue,
+            pokemonData,
+        } = this.state;
         const { history } = this.props;
         const updatedPage = page - 1;
 
@@ -167,12 +177,21 @@ export default class App extends Component<Props, State> {
    * as well as, how to update url when card view is changed
    */
     handleNavChange = (ev: string) => {
-        const { page, searchValue, pokemonData } = this.state;
+        const {
+            page,
+            searchValue,
+            pokemonData,
+            // eslint-disable-next-line no-unused-vars
+            navChanging,
+        } = this.state;
         const { history } = this.props;
 
         // conditional for when forward button is pressed from tile view
         if (ev === 'forward' && page !== pokemonData.meta.last_page) {
             this.navForward();
+            this.setState((prevState) => ({
+                navChanging: !prevState.navChanging,
+            }));
 
             // // uncomment for when no internet
             // const data = require('./data/page2.json');
@@ -185,6 +204,9 @@ export default class App extends Component<Props, State> {
         // conditional for when back button is pressed from tile view
         if (ev === 'backward' && page !== pokemonData.meta.from) {
             this.navBackward();
+            this.setState((prevState) => ({
+                navChanging: !prevState.navChanging,
+            }));
 
             // // uncomment for when no internet
             // const data = require('./data/page1.json');
@@ -219,6 +241,7 @@ export default class App extends Component<Props, State> {
             cardView,
             pokemonData,
             name,
+            navChanging,
         } = this.state;
         return (
             <div id='appTopDiv' className='container-fluid'>
@@ -239,6 +262,7 @@ export default class App extends Component<Props, State> {
                         changeCardView={this.changeCardView}
                         cardView={cardView}
                         setName={this.setName}
+                        navChanging={navChanging}
                     />
 
                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './navigation.css';
 
@@ -11,26 +11,29 @@ type Props = {
  *
  * @param {Function} handleNavChange Function used to determine type of navigation
  */
-export const ForwardButton = ({ handleNavChange }: Props) => (
-    <CSSTransition
-        in
-        appear
-        timeout={2000}
-        classNames='my-node-entering'
-    >
-        <button
-            id='forwardButtonButton'
-            onClick={() => handleNavChange('forward')}
-            className='arrow'
-            type='button'
-        >
-            <i
-                id='forwardButtonI'
-                className='fas fa-arrow-alt-circle-right fa-4x inner-color'
-                role='navigation'
-            />
-        </button>
-    </CSSTransition>
-);
+export const ForwardButton = ({ handleNavChange }: Props) => {
+    const [flag, setFlag] = useState(false);
+    return (
+        <>
+            <CSSTransition
+                in={flag}
+                timeout={2000}
+                classNames='alert'
+            >
+                <button
+                    id='forwardButtonButton'
+                    onClick={() => { handleNavChange('forward'); flag ? setFlag(false) : setFlag(true); }}
+                    className='arrow-button'
+                    type='button'
+                >
+                    <div className='arrow-icon-right'>
+                        &#8250;
+                    </div>
+                </button>
+            </CSSTransition>
+            {/* <button onClick={() => (flag ? setFlag(false) : setFlag(true))} type='button'> Hello </button> */}
+        </>
+    );
+};
 
 export default ForwardButton;

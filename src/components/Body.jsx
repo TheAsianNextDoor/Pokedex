@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Route, Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import { Tile } from './Tile/Tile';
 import Card from './PokemonCard/Card';
 import './Body.css';
 
 type Props = {
     cardView: boolean,
+    navChanging: boolean,
     pokemonData: Object,
     setName: Function,
     changeCardView: Function,
@@ -24,6 +26,7 @@ type State = {
  * Class component that holds either cards or tiles depending on user interaction
  *
  * @param {boolean} cardView Boolean that keeps track of tile and card visibility
+ * @param {boolean} navChanging Boolean that keeps track of navigation
  * @param {Object} pokemonData Object containing pokemon data
  * @param {Function} setName Function that sets the pokemon name in header
  * @param {Function} changeCardView Function that changes tile and card visibility
@@ -68,52 +71,55 @@ export default class Body extends Component<Props, State> {
         const {
             setName,
             cardView,
+            navChanging,
         } = this.props;
 
-        // all tiles fetched
+        // all rows combined
         const finalOutput = [];
-        // output of tiles to be wrapped in Row
+        // output of row
         let rowOutput = [];
         // keeps track of current index
-        let arrayIndex = 0;
+        let index = 0;
         // tiles per rows
         const tileCount = 4;
-        // i = numbers of rows
-        for (let i = 0; i < (size / tileCount); i += 1) {
-            // captures indexCount for beginning of each row
-            const initialRowIndex = arrayIndex;
-            // j = number of items per row
-            for (
-                let j = 0;
-                (size - initialRowIndex) < tileCount ? j < (size % tileCount) : j < tileCount;
-                j += 1) {
+        // number of rows
+        const numberOfRows = Math.round(size / tileCount);
+
+        for (let i = 0; i < numberOfRows; i += 1) {
+            const elementCount = i * tileCount;
+            const elementsRemaining = size - elementCount;
+            const tilesInRow = elementsRemaining >= tileCount
+                ? tileCount
+                : elementsRemaining % tileCount;
+
+            for (let j = 0; j < tilesInRow; j += 1) {
                 rowOutput.push(
                     // create reactstrap column and react router link
-                    <Col key={ids[arrayIndex]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
+                    <Col key={ids[index]} className='tilePadding' xs='6' sm='6' md='3' lg='3'>
                         <Link
-                            id={`link${names[arrayIndex]}`}
-                            key={ids[arrayIndex]}
+                            id={`link${names[index]}`}
+                            key={ids[index]}
                             to={{
-                                pathname: `/Pokedex/Pokemon/${names[arrayIndex]}`,
+                                pathname: `/Pokedex/Pokemon/${names[index]}`,
                                 state: {
-                                    id: ids[arrayIndex],
+                                    id: ids[index],
                                 },
                             }}
                             onClick={this.updateCardView}
                         >
                             <Tile
-                                id={`tile${names[arrayIndex]}`}
-                                key={ids[arrayIndex]}
-                                name={names[arrayIndex]}
-                                img={imgs[arrayIndex]}
-                                types={types[arrayIndex]}
+                                id={`tile${names[index]}`}
+                                key={ids[index]}
+                                name={names[index]}
+                                img={imgs[index]}
+                                types={types[index]}
                             />
                         </Link>
                     </Col>,
                 );
-                arrayIndex += 1;
+                index += 1;
             }
-            // wraps row around tileCount number of Columns
+            // Adds row to final output array
             finalOutput.push(
                 <Row key={i}>
                     {' '}
@@ -127,9 +133,22 @@ export default class Body extends Component<Props, State> {
 
         if (!cardView) {
             return (
-                <div id='bodyDiv' className='bodySize'>
-                    {finalOutput}
-                </div>
+                <>
+                    <CSSTransition
+                        in={navChanging}
+                        timeout={4000}
+                        classNames={{
+                            enter: 'fade-enter',
+                            enterActive: 'fade-enter-active',
+                            // enterDone: { setValue },
+                        }}
+                    >
+                        <div id='bodyDiv' className='bodySize'>
+
+                            {finalOutput}
+                        </div>
+                    </CSSTransition>
+                </>
             );
         }
 

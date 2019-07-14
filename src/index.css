@@ -1,3 +1,13 @@
 .bg{
   background-color: rgba(85, 166, 156, 1);
 }
+
+.fade-appear {
+  opacity: 0;
+}
+
+.fade-appear-active {
+  opacity: 1;
+  transition: opacity 2.5s ease-in-out;
+}
+

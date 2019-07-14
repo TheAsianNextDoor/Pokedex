@@ -2,20 +2,28 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route } from 'react-router';
 import ReactDOM from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import App from './App.jsx';
+import App from './App';
 
 
 ReactDOM.render(
-    <Router>
-        <div>
-            <Route
-                component={App}
-            />
-        </div>
-    </Router>,
+    <CSSTransition
+        in
+        appear
+        timeout={2500}
+        classNames='fade'
+    >
+        <Router>
+            <div>
+                <Route
+                    component={App}
+                />
+            </div>
+        </Router>
+    </CSSTransition>,
     document.getElementById('root'),
 );
 
