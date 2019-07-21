@@ -17,8 +17,8 @@ export const ForwardButton = ({ handleNavChange }: Props) => {
         <>
             <CSSTransition
                 in={flag}
-                timeout={2000}
-                classNames='alert'
+                timeout={1000}
+                classNames='fade'
             >
                 <button
                     id='forwardButtonButton'

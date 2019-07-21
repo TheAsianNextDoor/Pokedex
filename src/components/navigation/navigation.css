@@ -20,20 +20,27 @@ button:focus {
   outline: none;
 }
 
-.alert-enter {
-  opacity: 0
-}
-.alert-enter-active {
-  opacity: 1;
-  transition: opacity 2s ease-in;
+@keyframes fadeInOut {
+  0% { opacity: 1; }
+  50%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.alert-exit {
+.fade-enter{
   opacity: 1;
 }
-.alert-exit-active {
-  opacity: 0;
-  transition: opacity 2s ease-in;
+
+.fade-enter-active{
+  animation: fadeInOut .5s;
+
+}
+
+.fade-exit{
+  opacity: 1;
+}
+
+.fade-exit-active{
+  animation: fadeInOut .5s;
 }
 
 .arrow-button{

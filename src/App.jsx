@@ -24,7 +24,17 @@ type State = {
  */
 export default class App extends Component<Props, State> {
     state = {
-        pokemonData: { data: {} },
+        pokemonData: {
+            data: [
+                {
+                    // id: {},
+                    // names: {},
+                    // imgs: {},
+                    // types: {},
+                    // size: 0,
+                },
+            ],
+        },
         page: 1,
         name: '',
         searchValue: '',
@@ -60,24 +70,34 @@ export default class App extends Component<Props, State> {
    *
    * @param {string} apiCall The string used to make an axios GET request
    */
-    retrieveData = (apiCall: ?string) => {
+    retrieveData = async (apiCall: string) => {
         // attempts to get url from local storage
         const cacheResponse = localStorage.getItem(apiCall);
 
         // if api response hasn't been cached yet, make axios call
         if (cacheResponse === null) {
-            axios.get(apiCall)
-                .then((response) => {
-                    const list = response.data;
-                    // set api call to state
-                    this.setState(() => ({
-                        pokemonData: list,
-                        page: list.meta.current_page,
-                    }));
-
-                    // save api call to local storage
-                    localStorage.setItem(apiCall, JSON.stringify(list));
+            let result;
+            try {
+                result = await axios({
+                    method: 'GET',
+                    url: apiCall,
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                    },
                 });
+            } catch (error) {
+                console.error(error);
+            }
+            const list = result.data;
+
+            // set api call to state
+            await this.setState(() => ({
+                pokemonData: list,
+                page: list.meta.current_page,
+            }));
+
+            // save api call to local storage
+            localStorage.setItem(apiCall, JSON.stringify(list));
         } else {
             // retrieve cached response from local storage and convert to json
             const retrievedObject = JSON.parse(localStorage.getItem(apiCall));

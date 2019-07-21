@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import './navigation.css';
 
 type Props = {
@@ -18,25 +19,34 @@ export const BackwardButton = ({
     handleNavChange,
     changeCardView,
     cardView,
-}: Props) => (
-    <>
-        <button
-            id='backwardButtonButton'
-            className='arrow-button'
-            type='button'
-            // Changes functionality depending on if CardView
-            onClick={!cardView ? () => {
-                handleNavChange('backward');
-            } : () => {
-                changeCardView();
-                handleNavChange('cardView');
-            }}
-        >
-            <div className='arrow-icon-left'>
+}: Props) => {
+    const [flag, setFlag] = useState(false);
+    return (
+        <>
+            <CSSTransition
+                in={flag}
+                timeout={1000}
+                classNames='fade'
+            >
+                <button
+                    id='backwardButtonButton'
+                    className='arrow-button'
+                    type='button'
+                    // Changes functionality depending on if CardView
+                    onClick={!cardView ? () => {
+                        handleNavChange('backward');
+                        flag ? setFlag(false) : setFlag(true);
+                    } : () => {
+                        changeCardView();
+                        handleNavChange('cardView');
+                    }}
+                >
+                    <div className='arrow-icon-left'>
                 &#8249;
-            </div>
-        </button>
-    </>
-);
-
+                    </div>
+                </button>
+            </CSSTransition>
+        </>
+    );
+};
 export default BackwardButton;

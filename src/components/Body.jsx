@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Route, Link } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 import { Tile } from './Tile/Tile';
 import Card from './PokemonCard/Card';
 import './Body.css';
@@ -133,22 +132,10 @@ export default class Body extends Component<Props, State> {
 
         if (!cardView) {
             return (
-                <>
-                    <CSSTransition
-                        in={navChanging}
-                        timeout={4000}
-                        classNames={{
-                            enter: 'fade-enter',
-                            enterActive: 'fade-enter-active',
-                            // enterDone: { setValue },
-                        }}
-                    >
-                        <div id='bodyDiv' className='bodySize'>
+                <div id='bodyDiv' className='bodySize'>
 
-                            {finalOutput}
-                        </div>
-                    </CSSTransition>
-                </>
+                    {finalOutput}
+                </div>
             );
         }
 
